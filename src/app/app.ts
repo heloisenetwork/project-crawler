@@ -1,6 +1,5 @@
 ///<reference path="http/HTTPGetter.ts"/> 
 ///<reference path="html/HtmlParser.ts"/> 
-
 interface Indicator{
 	indicate(); 
 	postToEs();

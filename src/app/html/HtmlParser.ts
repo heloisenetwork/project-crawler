@@ -1,5 +1,4 @@
-///<reference path="../../typings/jsdom/jsdom.d.ts"/>
-
+///<reference path="../../typings/jsdom/jsdom.d.ts" />										
 module HtmlParser{
 
 	export class CPLHtmlParser{
@@ -16,20 +15,22 @@ module HtmlParser{
 		}	
 
 		getContent(){
-		this.jsparser.env(new CPLIndexPageConfig(this.html, this.jquery) , (error, dom) => {
+			this.jsparser.env(new CPLIndexPageConfig(this.html, this.jquery, this.getIndexList));
+		}
+		
+		getIndexList = (error, dom) => {
 				var $ = dom.$; 
 					$.each($("#content li"), (index, value) => {
 						console.log($(value).text());
 					});
-				}
-			);
-		}
-	}
-	
+			}
 
-	class CPLIndexPageConfig implements jsdom.Config{
-			html:string his.html, 
-			src: [this.jquery],
-			constructor(public html: string, public src:string){}
 	}
+
+		class CPLIndexPageConfig{
+		constructor(public html: string, public src:string, public done: Function){}
+		}
+
+
+	
 } 
