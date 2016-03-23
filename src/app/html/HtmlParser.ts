@@ -16,17 +16,20 @@ module HtmlParser{
 		}	
 
 		getContent(){
-		this.jsparser.env({
-			html: this.html, 
-			src: [this.jquery] ,
-			done: (error, dom) => {
+		this.jsparser.env(new CPLIndexPageConfig(this.html, this.jquery) , (error, dom) => {
 				var $ = dom.$; 
 					$.each($("#content li"), (index, value) => {
 						console.log($(value).text());
 					});
 				}
-			});
-
+			);
 		}
+	}
+	
+
+	class CPLIndexPageConfig implements jsdom.Config{
+			html:string his.html, 
+			src: [this.jquery],
+			constructor(public html: string, public src:string){}
 	}
 } 
