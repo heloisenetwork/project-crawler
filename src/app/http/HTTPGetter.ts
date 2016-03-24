@@ -33,7 +33,7 @@ module HTTPGetter{
 		constructor(public type:PageType, public body:string){}
 	}
 
-	export enum PageType{INDEX,DETAIL};
+	export enum PageType{INDEX,DETAIL,SINGLE_INDEX};
 
 	class HTTPGetter extends Observable{
 		private request	= require('request');
@@ -69,15 +69,27 @@ module HTTPGetter{
 		protected getBaseUrl(): string{
 			return this.baseUrl;
 		}
+		protected getRequest(){
+			return this.request; 
+		}
 	}
 	
 	export class CPLGetter extends HTTPGetter{
+	
 		/**
 		The Constructor - instantiates with indexPage of CPL
 		*/
 		constructor(){
 			super("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste.html");
 			super.setBaseUrl("http://www.uni-leipzig.de");
+			}
+
+		public getSingleIndexPage(nr: number){
+		super.getRequest()("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite" + nr + ".html", (error, response, body) =>  {
+				var htmlDto = new HtmlDto(PageType.SINGLE_INDEX, body);
+				super.notifyObservers(htmlDto);
+			});
+
 		}
 	}
 	

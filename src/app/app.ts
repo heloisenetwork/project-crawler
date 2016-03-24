@@ -29,18 +29,26 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 	
 	public update(html: HTTPGetter.HtmlDto):void {
 		if(html.type == HTTPGetter.PageType.INDEX){
-			this.parseIndex(html.body);
+		this.parseIndex(html.body);
+		}
+		if(html.type == HTTPGetter.PageType.SINGLE_INDEX){
+		this.parseIndexPage(html.body);
 		}
 		if(html.type == HTTPGetter.PageType.DETAIL){
 			this.parseDetail(html.body);
 		}
 	}
+
+
+	private parseIndex(body:string){
+		var parser : HtmlParser.CPLHtmlParser = new HtmlParser.CPLHtmlParser(body);
+		parser.getNumberOfIndexPages(this.loopIndexPages);	
+	}
 	
-	private parseIndex(body: string){
+	private parseIndexPage(body: string){
 		var parser : HtmlParser.CPLHtmlParser = new HtmlParser.CPLHtmlParser(body);
 		//parser.findDetailLinkList(this.fetchLinkList);
 		parser.parseIndexToProfs(this.addToProfList);
-
 	}
 	
 	private parseDetail(body:string){
@@ -52,9 +60,14 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 	/**
 		Closures to be passed to HTML-Parser
 	*/	
+	private loopIndexPages = (nrOfPages: number): void =>  {
+		for(var i = 1; i <= nrOfPages; i++){
+			this.cplGetter.getSingleIndexPage(i);
+		} 
+	}
 	private addToProfList = (prof: DTO.Prof): void =>  {
 	 this.profList[this.profList.length] = prof;
-	 console.log(this.profList.length);
+	 //console.log(this.profList[this.profList.length - 1] + " of " + this.profList.length);
 	}
 	
 	private fetchLinkList = (arr: string[], getPages = this.getDetailPages): void =>  {

@@ -10,8 +10,10 @@ module HtmlParser{
 		private detailLinkList: string[] = new Array<string>();  
 		private profProcessor =  function(prof: DTO.Prof):void{};
 		private linkProcessor =  function(arr:string[]):void{}; 
+		private indexLoop =  function(nr:number):void{}; 
 		private config: CPLIndexPageConfig; 
-		private detailPageConfig: CPLIndexPageConfig; 
+		private detailPageConfig: CPLIndexPageConfig;
+		private indexPageNumberConfig:CPLDetailPageConfig;
 
 
 		/**
@@ -26,7 +28,6 @@ module HtmlParser{
 			Deprecated
 		*/
 		public findDetailLinkList = function(linkProcessor:(arr:string[])=>void){
-			console.log('start');
 			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.getUrlsFromIndexList);
 			this.jsparser.env(this.config);
 			this.linkProcessor = linkProcessor; 
@@ -38,7 +39,6 @@ module HtmlParser{
 			Uses JSDOM-Callback to parse the page. ProfessorDTOS are processed by profProcessor  Argument	
 			*/	
 		public parseIndexToProfs = function(profProcessor:(prof: DTO.Prof)=> void){
-			console.log('start Index Parsing');
 			this.profProcessor = profProcessor;
 			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.parseIndexEntriesToProfInfos);
 			this.jsparser.env(this.config);
@@ -52,12 +52,17 @@ module HtmlParser{
 			
 			*/	
 		public parseDetails(profProcessor:(prof: DTO.Prof)=> void){
-			console.log("start Processing Detail");
 			this.profProcessor = profProcessor;
 			var config:CPLDetailPageConfig = new CPLDetailPageConfig(this.html, this.jquery, this.parseDetailPage);
 			this.jsparser.env(config);
 			
 		}
+
+	public getNumberOfIndexPages(indexLoop: (nr:number) => void){
+		this.indexLoop = indexLoop; 
+		this.indexPageNumberConfig = new CPLDetailPageConfig(this.html, this.jquery, this.parsePageForNumberOfIndexPages);
+		this.jsparser.env(this.indexPageNumberConfig);
+	}
 		
 		private parseDetailPage : (x: any, y: any) => void =  (error, dom) => {
 			var $ = dom.$; 
@@ -67,14 +72,24 @@ module HtmlParser{
 			this.profProcessor(prof);
 			console.log($('#Leben p').html().split("<br>"));
 			}
+
+		private parsePageForNumberOfIndexPages : (x: any, y: any) => void =  (error, dom) => {
+			var $ = dom.$; 
+			var pageLinks =  $('.seiten a')
+			var numberOfPageLinks = $(pageLinks[pageLinks.length - 1]).text();
+			this.indexLoop(numberOfPageLinks);
+			}
 		
 		public parseIndexEntriesToProfInfos: (x: any, y: any) => void = (err, dom)=>{
-			var $ = dom.$; 
+			var $ = dom.$;
+			if(err){
+				console.log(err);
+			}
 			$.each($('#content li a'),(index, value) => {
 				var prof: DTO.Prof = new DTO.Prof();
 				var labelString = $(value).text();
 				var name = labelString.split('(')[0].split(',');
-				prof.name = name[1] + " " + name[0];
+				prof.name = name[1] + name[0];
 				prof.url = $(value).attr('href'); 
 				prof.projectId = "CPL";
 				this.profProcessor(prof);
