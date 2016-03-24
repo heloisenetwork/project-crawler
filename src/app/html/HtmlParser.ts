@@ -9,7 +9,7 @@ module HtmlParser{
 		private html: string; 
 		private detailLinkList: string[] = new Array<string>();  
 		private profProcessor =  function(prof: DTO.Prof):void{};
-		private callBack =  function(arr:string[]):void{}; 
+		private linkProcessor =  function(arr:string[]):void{}; 
 		private config: CPLIndexPageConfig; 
 		private detailPageConfig: CPLIndexPageConfig; 
 
@@ -20,40 +20,77 @@ module HtmlParser{
 		constructor(html: string){
 			this.html = html;
 		}	
-
-		public findDetailLinkList = function(callBack:(arr:string[])=>void){
+		/**
+			API-Function to get the Links of all Index - Entries.
+			Uses JSDOM-Callback to get the Links. Links are processed by linkProcesser Argument
+			Deprecated
+		*/
+		public findDetailLinkList = function(linkProcessor:(arr:string[])=>void){
 			console.log('start');
-			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.getIndexList); 	
+			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.getUrlsFromIndexList);
 			this.jsparser.env(this.config);
-			this.callBack = callBack; 
+			this.linkProcessor = linkProcessor; 
 		
-		}
+			}
 
+			/**
+			API-Function to Parse the IndexPage of an CPL-Professor to a DTO.Prof.
+			Uses JSDOM-Callback to parse the page. ProfessorDTOS are processed by profProcessor  Argument	
+			*/	
+		public parseIndexToProfs = function(profProcessor:(prof: DTO.Prof)=> void){
+			console.log('start Index Parsing');
+			this.profProcessor = profProcessor;
+			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.parseIndexEntriesToProfInfos);
+			this.jsparser.env(this.config);
+		
+			}
+
+		
+			/**
+			API-Function to Parse the DetailPage of an CPL-Professor to a DTO.Prof.
+			Uses JSDOM-Callback to parse the page. ProfessorDTOS are processed by profProcessor  Argument
+			
+			*/	
 		public parseDetails(profProcessor:(prof: DTO.Prof)=> void){
 			console.log("start Processing Detail");
 			this.profProcessor = profProcessor;
-			var config:CPLDetailPageConfig = new CPLDetailPageConfig(this.html, this.jquery, this.getDetails);
+			var config:CPLDetailPageConfig = new CPLDetailPageConfig(this.html, this.jquery, this.parseDetailPage);
 			this.jsparser.env(config);
 			
 		}
 		
-		private getDetails : (x: any, y: any) => void =  (error, dom) => {
+		private parseDetailPage : (x: any, y: any) => void =  (error, dom) => {
 			var $ = dom.$; 
 			var vitaDiv = $('#Lebenslauf');
 			var prof: DTO.Prof = new DTO.Prof() ; 
 			prof.name = $('#Lebenslauf h1').text();
 			this.profProcessor(prof);
-		}
+			console.log($('#Leben p').html().split("<br>"));
+			}
 		
-		getIndexList: (x: any, y: any) => void =  (error, dom) => {
+		public parseIndexEntriesToProfInfos: (x: any, y: any) => void = (err, dom)=>{
+			var $ = dom.$; 
+			$.each($('#content li a'),(index, value) => {
+				var prof: DTO.Prof = new DTO.Prof();
+				var labelString = $(value).text();
+				var name = labelString.split('(')[0].split(',');
+				prof.name = name[1] + " " + name[0];
+				prof.url = $(value).attr('href'); 
+				prof.projectId = "CPL";
+				this.profProcessor(prof);
+			});
+		}
+		 
+		public getUrlsFromIndexList: (x: any, y: any) => void =  (error, dom) => {
 
 				var $ = dom.$; 
 				console.log("start Iteration");
 				var listElements =  $("#content li a");
 				$.each(listElements, (index, value) => {
 						this.detailLinkList[index] = $(value).attr('href');
+
 					});
-				this.callBack(this.detailLinkList);
+				this.linkProcessor(this.detailLinkList);
 				console.log("end Iteration");
 
 			}
@@ -66,7 +103,4 @@ module HtmlParser{
 		class CPLDetailPageConfig{
 		constructor(public html: string, public src:string, public done: Function){}
 		}
-
-
-	
 } 

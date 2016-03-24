@@ -7,6 +7,10 @@ interface Indicator{
 module DTO{
 export class Prof{
 	name: string; 
+	url: string;
+	birthDate: string;
+	deathDate: string;
+	projectId: string;
 
 	}
 }
@@ -34,7 +38,8 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 	
 	private parseIndex(body: string){
 		var parser : HtmlParser.CPLHtmlParser = new HtmlParser.CPLHtmlParser(body);
-		parser.findDetailLinkList(this.fetchLinkList);
+		//parser.findDetailLinkList(this.fetchLinkList);
+		parser.parseIndexToProfs(this.addToProfList);
 
 	}
 	
@@ -43,14 +48,15 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 		parser.parseDetails(this.addToProfList);
 	}
 
-	private addToProfList = (prof: DTO.Prof): void =>  {
-	 this.profList[this.profList.length] = prof;
-	 console.log(this.profList);
-	}
 
 	/**
-		Closure to be passed to HTML-Parser
+		Closures to be passed to HTML-Parser
 	*/	
+	private addToProfList = (prof: DTO.Prof): void =>  {
+	 this.profList[this.profList.length] = prof;
+	 console.log(this.profList.length);
+	}
+	
 	private fetchLinkList = (arr: string[], getPages = this.getDetailPages): void =>  {
 		this.linkList = arr;
 		getPages();
@@ -62,5 +68,6 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 		});
 	}
 }
+
 var indicator = new IndicatorCPL();
 indicator.indicate();
