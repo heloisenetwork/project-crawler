@@ -8,7 +8,7 @@ module HTTPGetter{
 
 	class Observable{
 		private observers : Observer [];
-
+		
 		constructor() {
 			this.observers = [];
 		}
@@ -38,6 +38,7 @@ module HTTPGetter{
 	class HTTPGetter extends Observable{
 		private request	= require('request');
 		private indexPage: string;
+		protected baseUrl : string; 
 		/**
 		The Constructor
 		*/
@@ -51,9 +52,23 @@ module HTTPGetter{
 				var htmlDto = new HtmlDto(PageType.INDEX, body);
 				super.notifyObservers(htmlDto);
 			});
-												
+		}
+
+		public getDetailPage(url: string){
+			this.request(this.getBaseUrl() + url , (error, response, body) =>  {
+				var htmlDto = new HtmlDto(PageType.DETAIL, body);
+				super.notifyObservers(htmlDto);
+			});
+			
 		}
 	
+		protected setBaseUrl(baseUrl:string){
+			this.baseUrl = baseUrl; 
+		}
+	
+		protected getBaseUrl(): string{
+			return this.baseUrl;
+		}
 	}
 	
 	export class CPLGetter extends HTTPGetter{
@@ -62,6 +77,7 @@ module HTTPGetter{
 		*/
 		constructor(){
 			super("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste.html");
+			super.setBaseUrl("http://www.uni-leipzig.de");
 		}
 	}
 	
