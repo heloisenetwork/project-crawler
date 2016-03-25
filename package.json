@@ -16,8 +16,6 @@
     "grunt-open": "^0.2.3",
     "grunt-run": "^0.5.2",
     "grunt-ts": "^5.3.2",
-    "grunt-typescript": "^0.8.0",
-    "htmlparser2": "^3.9.0",
     "jsdom": "^8.1.0",
     "request": "^2.69.0",
     "typescript": "^1.8.7"
