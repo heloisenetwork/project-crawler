@@ -67,7 +67,8 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 	}
 	private addToProfList = (prof: DTO.Prof): void =>  {
 	 this.profList[this.profList.length] = prof;
-	 //console.log(this.profList[this.profList.length - 1] + " of " + this.profList.length);
+	 console.log(this.profList[this.profList.length - 1]); 
+	 console.log(" of " + this.profList.length);
 	}
 	
 	private fetchLinkList = (arr: string[], getPages = this.getDetailPages): void =>  {
