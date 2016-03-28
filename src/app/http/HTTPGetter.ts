@@ -84,12 +84,12 @@ module HTTPGetter{
 			super.setBaseUrl("http://www.uni-leipzig.de");
 			}
 
-		public getSingleIndexPage(nr: number, nrOfAttempts:number = 0){
+		public getSingleIndexPage(nr: number, nrOfAttempts:number = 1){
 			super.getRequest()("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite" + nr + ".html", (error, response, body) =>  {
 				if(error){
 					console.log("Number of Attempts: " + nrOfAttempts);
 					console.log(error);
-					if(nrOfAttempts < 10){
+					if(nrOfAttempts < 11){
 						this.getSingleIndexPage(nr, nrOfAttempts++);
 					}
 				}else{
