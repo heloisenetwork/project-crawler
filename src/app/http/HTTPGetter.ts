@@ -49,7 +49,6 @@ module HTTPGetter{
 
 		public doGet(){
 			this.request(this.indexPage, (error, response, body) =>  {
-				console.log(error);
 				var htmlDto = new HtmlDto(PageType.INDEX, body);
 				super.notifyObservers(htmlDto);
 			});
@@ -85,13 +84,13 @@ module HTTPGetter{
 			super.setBaseUrl("http://www.uni-leipzig.de");
 			}
 
-		public getSingleIndexPage(nr: number, nrOfTries:number = 0){
+		public getSingleIndexPage(nr: number, nrOfAttempts:number = 0){
 			super.getRequest()("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite" + nr + ".html", (error, response, body) =>  {
 				if(error){
-					console.log("Number of Tries: " + nrOfTries);
+					console.log("Number of Attempts: " + nrOfAttempts);
 					console.log(error);
-					if(nrOfTries < 10){
-						this.getSingleIndexPage(nr, nrOfTries++);
+					if(nrOfAttempts < 10){
+						this.getSingleIndexPage(nr, nrOfAttempts++);
 					}
 				}else{
 					var htmlDto = new HtmlDto(PageType.SINGLE_INDEX, body);

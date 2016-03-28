@@ -3,7 +3,8 @@
 module HtmlParser{
 
 	export class CPLHtmlParser{
-		private  jsparser = require('jsdom');
+		private baseUrl = "http://www.uni-leipzig.de";
+		private jsparser = require('jsdom');
 		private fs = require("fs");
 		private jquery = this.fs.readFileSync("./js/jquery_1.12.1.js", "utf-8");
 		private html: string; 
@@ -90,7 +91,7 @@ module HtmlParser{
 				var labelString = $(value).text();
 				var name = labelString.split('(')[0].split(',');
 				prof.name = name[1] + name[0];
-				prof.url = $(value).attr('href'); 
+				prof.url = this.baseUrl + $(value).attr('href'); 
 				prof.projectId = "CPL";
 				this.profProcessor(prof);
 			});
