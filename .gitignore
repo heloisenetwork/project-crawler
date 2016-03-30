@@ -2,3 +2,4 @@
 **/.*
 **/tsd.json
 js/
+src/typings/tsd.d.ts
