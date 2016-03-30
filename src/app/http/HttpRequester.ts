@@ -20,6 +20,23 @@ export class HttpRequester extends Observer.Observable{
 	public requestDetailPage(detailPageUrl:string):void{
 		console.log("Abstract Method called");
 	}
+
+	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1): void =>  
+	{
+		this.request(url, (error, response, body) =>  {
+			if(error){
+				console.log(error);
+				console.log("Attempts: " + attempts);
+				
+				if(attempts < 11){
+					this.doRequest(url, pageType, attempts++);
+				}
+			}else{
+				var htmlDto = new DTO.HtmlDto(pageType, body);
+				super.notifyObservers(htmlDto);
+			}
+		});
+	}
 }
 
 export class CplHttpRequester extends HttpRequester{
@@ -37,23 +54,16 @@ export class CplHttpRequester extends HttpRequester{
 	public requestIndexPage(numberOfPage?:number):void
 	{
 		if(!numberOfPage){
-			this.request(this.indexPageUrl, (error, response, body) =>  {
-				var htmlDto = new DTO.HtmlDto(DTO.PageType.INDEX, body);
-				super.notifyObservers(htmlDto);
-			});
+			this.doRequest(this.indexPageUrl, DTO.PageType.INDEX);
 		}else if(typeof numberOfPage == "number"){
 			var pageUrl = this.indexPagePrefix + numberOfPage + this.indexPageSuffix;
-			this.request(pageUrl, (error, response, body) =>  {
-				var htmlDto = new DTO.HtmlDto(DTO.PageType.SINGLE_INDEX, body);
-				super.notifyObservers(htmlDto);
-			});
+			this.doRequest(pageUrl, DTO.PageType.SINGLE_INDEX);
 		}
 	}
 
 	public requestDetailPage(detailPageUrl:string):void{
-		console.log("Not implemented yet")	
+		this.doRequest(detailPageUrl, DTO.PageType.DETAIL);	
 	}
 }
-
 
 }
