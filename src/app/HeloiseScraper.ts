@@ -24,7 +24,6 @@ export class CplHeloiseScraper extends HeloiseScraper{
 		if(dto.type == DTO.PageType.INDEX){
 			this.scrapeIndexPages(dto.body);	
 		}else if(dto.type == DTO.PageType.SINGLE_INDEX){
-			console.log("Event");
 			this.scrapeSingleIndexPage(dto.body);	
 		}
 	}
@@ -43,9 +42,10 @@ export class CplHeloiseScraper extends HeloiseScraper{
 	private scrapeSingleIndexPage(htmlBody: string): void{
 	 	var profList: DTO.ProfDto[] = this.parser.parseIndexPage(htmlBody);
 		for(var i = 0; i<profList.length; i++){
-			console.log(profList[i]);
+						/*console.log(profList[i]);
 			this.profs[this.profs.length] = profList[i];
-			console.log(this.profs.length);
+			console.log(this.profs.length);*/
+			this.requester.postToEs(profList[i]);
 		}
 	}
 }

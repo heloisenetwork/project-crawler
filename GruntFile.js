@@ -62,7 +62,7 @@ module.exports = function(grunt){
 		ts: {
 		app: {
 				files: [
-					{src: ['src/app/**/*.ts'], dest: 'js/app.js'}
+					{src: ['src/app/**/*.ts', '!src/app/app.ts'], dest: 'js/app.js'}
 				],
 				options: {
 					target: "es5",

@@ -32,7 +32,7 @@ export class CplHeloiseParser extends HeloiseParser{
 		var profList: DTO.ProfDto[] = []; 
 	 	var $ = this.cheerio.load(htmlBody);
 		$('#content li a').each((index, value) => {
-			var prof: DTO.ProfDto = new DTO.Prof();
+			var prof: DTO.ProfDto = new DTO.ProfDto();
 			var labelString = $(value).text();
 			var name = labelString.split('(')[0].split(',');
 			prof.name = name[1] + name[0];

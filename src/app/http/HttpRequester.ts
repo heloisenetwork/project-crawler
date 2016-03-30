@@ -21,6 +21,17 @@ export class HttpRequester extends Observer.Observable{
 		console.log("Abstract Method called");
 	}
 
+	public postToEs(prof: DTO.ProfDto):void{
+		console.log(prof);
+		this.request({
+			method: 'PUT',
+			uri: 'http://127.0.0.1:9200/heloise/'+ prof.projectId + '/' + prof.url.split("/")[prof.url.split("/").length-1],
+			json: prof
+			}, function(err, resp, body){
+			console.log(body);	
+		});
+	}
+
 	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1): void =>  
 	{
 		this.request(url, (error, response, body) =>  {
