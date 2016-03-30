@@ -1,4 +1,5 @@
 ///<reference path="../../typings/jsdom/jsdom.d.ts" />										
+///<reference path="../../typings/cheerio/cheerio.d.ts" />										
 ///<reference path="../app.ts" />										
 module HtmlParser{
 
@@ -6,6 +7,7 @@ module HtmlParser{
 		private baseUrl = "http://www.uni-leipzig.de";
 		private jsparser = require('jsdom');
 		private fs = require("fs");
+		private cheerio = require("cheerio");
 		private jquery = this.fs.readFileSync("./js/jquery_1.12.1.js", "utf-8");
 		private html: string; 
 		private detailLinkList: string[] = new Array<string>();  
@@ -39,12 +41,24 @@ module HtmlParser{
 			API-Function to Parse the IndexPage of an CPL-Professor to a DTO.Prof.
 			Uses JSDOM-Callback to parse the page. ProfessorDTOS are processed by profProcessor  Argument	
 			*/	
-		public parseIndexToProfs = function(profProcessor:(prof: DTO.Prof)=> void){
-			this.profProcessor = profProcessor;
+		public parseIndexToProfs = function(profProcessor:(prof: DTO.Prof)=> void): DTO.Prof[]{
+		/*this.profProcessor = profProcessor;
 			this.config = new CPLIndexPageConfig(this.html, this.jquery, this.parseIndexEntriesToProfInfos);
-			this.jsparser.env(this.config);
-		
-			}
+			this.jsparser.env(this.config);*/
+		var profList: DTO.Prof[] = []; 
+	 	var $ = this.cheerio.load(this.html);
+		$('#content li a').each((index, value) => {
+				var prof: DTO.Prof = new DTO.Prof();
+				var labelString = $(value).text();
+				var name = labelString.split('(')[0].split(',');
+				prof.name = name[1] + name[0];
+				prof.url = this.baseUrl + $(value).attr('href'); 
+				prof.projectId = "CPL";
+				profList[index] = prof; 
+				});
+
+			return profList;
+		}
 
 		
 			/**
@@ -59,10 +73,14 @@ module HtmlParser{
 			
 		}
 
-	public getNumberOfIndexPages(indexLoop: (nr:number) => void){
-		this.indexLoop = indexLoop; 
+	public getNumberOfIndexPages(indexLoop: (nr:number) => void):number{
+/*		this.indexLoop = indexLoop; 
 		this.indexPageNumberConfig = new CPLDetailPageConfig(this.html, this.jquery, this.parsePageForNumberOfIndexPages);
-		this.jsparser.env(this.indexPageNumberConfig);
+		this.jsparser.env(this.indexPageNumberConfig);*/
+	 	var $ = this.cheerio.load(this.html);
+		var pageLinks =  $('.seiten a')
+		var numberOfPageLinks = $(pageLinks[pageLinks.length - 1]).text();
+		return numberOfPageLinks
 	}
 		
 		private parseDetailPage : (x: any, y: any) => void =  (error, dom) => {

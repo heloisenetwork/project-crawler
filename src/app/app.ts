@@ -42,13 +42,20 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 
 	private parseIndex(body:string){
 		var parser : HtmlParser.CPLHtmlParser = new HtmlParser.CPLHtmlParser(body);
-		parser.getNumberOfIndexPages(this.loopIndexPages);	
+		var nrOfIndexPages = 	parser.getNumberOfIndexPages(this.loopIndexPages);
+		this.loopIndexPages(nrOfIndexPages);
 	}
 	
 	private parseIndexPage(body: string){
 		var parser : HtmlParser.CPLHtmlParser = new HtmlParser.CPLHtmlParser(body);
 		//parser.findDetailLinkList(this.fetchLinkList);
-		parser.parseIndexToProfs(this.addToProfList);
+		var profsOfPage: DTO.Prof[] = parser.parseIndexToProfs(this.addToProfList);
+		console.log(profsOfPage.length);
+		console.log(this.profList.length);
+
+		for(var i = 0; i < profsOfPage.length; i++){
+			this.profList[this.profList.length] = profsOfPage[i];
+		} 
 	}
 	
 	private parseDetail(body:string){
@@ -83,5 +90,5 @@ class IndicatorCPL implements HTTPGetter.Observer, Indicator {
 	}
 }
 
-var indicator = new IndicatorCPL();
-indicator.indicate();
+//var indicator = new IndicatorCPL();
+//indicator.indicate();
