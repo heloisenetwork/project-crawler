@@ -45,6 +45,13 @@ export class CplHeloiseParser extends HeloiseParser{
 	}
 	public parseDetailPage(htmlBody:string){
 		console.log("Not implemented yet");
+		/*
+			var vitaDiv = $('#Lebenslauf');
+			var prof: DTO.Prof = new DTO.Prof() ; 
+			prof.name = $('#Lebenslauf h1').text();
+			this.profProcessor(prof);
+			console.log($('#Leben p').html().split("<br>"));
+		*/
 	}
 }
 }
