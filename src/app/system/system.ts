@@ -1,19 +1,33 @@
 module DTO{
 
 	export class HtmlDto{
-		constructor(public type:PageType, public body:string){}
+		constructor(public type:PageType, public body:string, public profDto?:ProfDto){}
 	}
+
 
 export class ProfDto{
 	name: string; 
 	url: string;
+	id: string; 
 	birthDate: string;
 	deathDate: string;
-	projectId: string;
-
+	birthCity: string;
+	deathCity: string;
+	firstName: string;
+	lastName: string;
+	title: string;
 	}
+export class EsDto{
+	hits: Hit[];
+	}
+
+export class Hit{
+	_type: string;
+	id: string; 
+	_source: ProfDto; 
+}
 	
-export enum PageType{INDEX,DETAIL,SINGLE_INDEX};
+export enum PageType{INDEX,DETAIL,SINGLE_INDEX}
 } 
 
 module Observer{

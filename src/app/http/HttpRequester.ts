@@ -17,33 +17,56 @@ export class HttpRequester extends Observer.Observable{
 	}
 
 
-	public requestDetailPage(detailPageUrl:string):void{
+	public requestDetailPage(prof:DTO.ProfDto):void{
 		console.log("Abstract Method called");
 	}
 
-	public postToEs(prof: DTO.ProfDto):void{
-		console.log(prof);
+	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: 'http://127.0.0.1:9200/heloise/'+ prof.projectId + '/' + prof.url.split("/")[prof.url.split("/").length-1],
+			uri: 'http://127.0.0.1:9200/heloise/CPL/' + prof.url.split("/")[prof.url.split("/").length-1],
 			json: prof
 			}, function(err, resp, body){
-			console.log(body);	
+					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
+						console.log(resp.statusCode);
+						console.log(body);
+						console.log("Attempts: " + attempts);
+						if(attempts < 11){
+							console.log(this.request);
+						}
+					}
 		});
 	}
 
-	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1): void =>  
+public fetchAllFromES(nrOfResults: number, project:String, updater: (esResult: DTO.EsDto)=>void){
+		var profList: DTO.ProfDto[] = [];
+		this.request({
+			method: 'GET',
+			uri: 'http://127.0.0.1:9200/heloise/'+project+'/_search?size='+nrOfResults
+			
+			}, function(err, resp, body:string){
+					var esDto: DTO.EsDto = new DTO.EsDto();
+					var rawResult = JSON.parse(body);
+					esDto = <DTO.EsDto> rawResult.hits;
+					updater(esDto);
+		});
+		return profList;
+	}
+
+	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1, prof?:DTO.ProfDto): void =>  
 	{
-		this.request(url, (error, response, body) =>  {
-			if(error){
+		this.request(url,{timeout:10000}, (error, response, body) =>  {
+			if(error || !(response.statusCode == 200)){
 				console.log(error);
+				console.log(url);
 				console.log("Attempts: " + attempts);
 				
-				if(attempts < 11){
-					this.doRequest(url, pageType, attempts++);
+				if(attempts < 101){
+					this.doRequest(url, pageType, attempts+1,prof);
 				}
+			
 			}else{
-				var htmlDto = new DTO.HtmlDto(pageType, body);
+				var htmlDto = new DTO.HtmlDto(pageType, body, prof);
 				super.notifyObservers(htmlDto);
 			}
 		});
@@ -72,9 +95,10 @@ export class CplHttpRequester extends HttpRequester{
 		}
 	}
 
-	public requestDetailPage(detailPageUrl:string):void{
-		this.doRequest(detailPageUrl, DTO.PageType.DETAIL);	
+	public requestDetailPage(prof:DTO.ProfDto):void{
+		this.doRequest(prof.url, DTO.PageType.DETAIL, 1,prof);
 	}
+	
 }
 
 }
