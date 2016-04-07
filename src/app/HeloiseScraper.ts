@@ -36,8 +36,13 @@ export class CplHeloiseScraper extends HeloiseScraper{
 	
 	private scrapeIndexPages(htmlBody: string): void{
 	 	var numberOfIndexPages: number = this.parser.getNumberOfIndexPages(htmlBody);
-		for(var i = 1; i<=numberOfIndexPages; i++){
-			this.requester.requestIndexPage(i);
+		this.requestIndexPage(numberOfIndexPages);
+	}
+
+	private requestIndexPage(numberOfIndexPages: number, index:number=1){
+		if(!(index > numberOfIndexPages)){	
+			this.requester.requestIndexPage(index);
+			setTimeout(() => this.requestIndexPage(numberOfIndexPages, index+1),1000);
 		}
 	}
 
@@ -49,7 +54,7 @@ export class CplHeloiseScraper extends HeloiseScraper{
 	}
 
 	public scrapeDetails(){
-		this.requester.fetchAllFromES(1000, 'CPL',this.requestDetailsOf);
+		this.requester.fetchAllFromES(2000, 'CPL',this.requestDetailsOf);
 
 	}
 	public requestDetailsOf = (esResult : DTO.EsDto, index :number= 0):void => {
@@ -72,5 +77,5 @@ export class CplHeloiseScraper extends HeloiseScraper{
 }
 
 var scraper = new Scraper.CplHeloiseScraper();
-//scraper.scrapeIndex();
-scraper.scrapeDetails();
+scraper.scrapeIndex();
+//scraper.scrapeDetails();

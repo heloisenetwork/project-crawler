@@ -39,7 +39,9 @@ export class CplHeloiseParser extends HeloiseParser{
 			prof.url = this.baseUrl + $(value).attr('href'); 
 			prof.firstName = name[1].trim();
 			prof.lastName = name[0].trim(); 
-			prof.title = labelString.split('(')[1];
+			if(labelString.split('(')[1]){
+				prof.title = labelString.split('(')[1].replace(")","").trim();
+			}
 			profList[index] = prof; 
 		});
 
@@ -50,7 +52,11 @@ export class CplHeloiseParser extends HeloiseParser{
 	 	var $ = this.cheerio.load(htmlBody);
 		var vitaDiv = $('#Lebenslauf');
 		prof.name = $('#Lebenslauf h1').text();
-		var baseData:string[] = $($('#Leben').children('p')[0]).html().split("<br>");
+		var baseDiv = $($('#Leben').children('p')[0]).html();
+		var baseData:string[] = [];
+		if(baseDiv){
+			baseData = baseDiv.split("<br>");
+		}
 		for(var i = 0; i < baseData.length; i++){
 			var line:string = baseData[i];
 			if(this.isBirthDate(line)){
