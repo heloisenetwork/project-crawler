@@ -14,20 +14,21 @@ module.exports = function(grunt){
 				cmd: "node",
 				args: ["js/greeting.js"]
 			},
-			cpl-index: {
+			cpl_index: {
 				cmd: "node",
 				args: [
 					"js/app.js",
 					"cpl"
 				]
 			},
-			cpl-details: {
+			cpl_details: {
 				cmd: "node",
 				args: [
 					"js/app.js",
+					"cpl",
 					"details"
 				]
-			},
+			}
 		},
 		ts: {
 			app: {
