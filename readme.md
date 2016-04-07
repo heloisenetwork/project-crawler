@@ -38,11 +38,11 @@ __Momentan ist kein Elasticsearch Konfigurierbar. Damit der Scraper läuft muss 
 
 ## BuildTool:
 
-    //IndexScraping
-    grunt run:cpl\_index
+  //IndexScraping
+  grunt run:cpl_index
 
 	//DetailScraping
-	grunt run:cpl\_details
+	grunt run:cpl_details
 
 ## Konsole
 
