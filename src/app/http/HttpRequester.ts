@@ -12,7 +12,6 @@ export class HttpRequester extends Observer.Observable{
 	public requestIndexPage(numberOfPage: number):void;
 	public requestIndexPage(numberOfPage?:number):void
 	{
-		
 		console.log("Abstract Method called");
 	}
 
@@ -24,7 +23,7 @@ export class HttpRequester extends Observer.Observable{
 	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: 'http://127.0.0.1:9200/heloise/CPL/' + prof.url.split("/")[prof.url.split("/").length-1],
+			uri: 'http://127.0.0.1:9200/heloise/CPL/' + prof.id,
 			json: prof
 			}, function(err, resp, body){
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){

@@ -35,8 +35,11 @@ export class CplHeloiseParser extends HeloiseParser{
 			var prof: DTO.ProfDto = new DTO.ProfDto();
 			var labelString = $(value).text();
 			var name = labelString.split('(')[0].split(',');
+			var relUrl = $(value).attr('href');
+
 			prof.name = (name[1] + name[0]).trim();
-			prof.url = this.baseUrl + $(value).attr('href'); 
+			prof.url = this.baseUrl + relUrl; 
+			prof.id = relUrl.split("/")[relUrl.split("/").length-1]	
 			prof.firstName = name[1].trim();
 			prof.lastName = name[0].trim(); 
 			if(labelString.split('(')[1]){
