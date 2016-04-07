@@ -49,15 +49,20 @@ module.exports = function(grunt){
 				cmd: "node",
 				args: ["js/greeting.js"]
 			},
-			app: {
+			cpl-index: {
 				cmd: "node",
 				args: [
-					"js/app.js"
+					"js/app.js",
+					"cpl"
 				]
 			},
-			compile: {
-			cmd: "compileApp.sh"
-			}
+			cpl-details: {
+				cmd: "node",
+				args: [
+					"js/app.js",
+					"details"
+				]
+			},
 		},
 		ts: {
 		app: {
