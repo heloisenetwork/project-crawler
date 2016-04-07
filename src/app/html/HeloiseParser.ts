@@ -51,7 +51,6 @@ export class CplHeloiseParser extends HeloiseParser{
 			return profList;
 	}
 	public parseDetailPage(htmlBody:string, prof: DTO.ProfDto){
-
 	 	var $ = this.cheerio.load(htmlBody);
 		var vitaDiv = $('#Lebenslauf');
 		prof.name = $('#Lebenslauf h1').text();

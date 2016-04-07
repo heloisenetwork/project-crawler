@@ -7,6 +7,7 @@ export class HttpRequester extends Observer.Observable{
 	protected request = require('request');
 	protected baseUrl:string;
 	protected indexPageUrl:string;
+	protected projectId: string;
 
 	public requestIndexPage():void;
 	public requestIndexPage(numberOfPage: number):void;
@@ -23,25 +24,24 @@ export class HttpRequester extends Observer.Observable{
 	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: 'http://127.0.0.1:9200/heloise/CPL/' + prof.id,
+			uri: 'http://127.0.0.1:9200/heloise/'+this.projectId+'/' + prof.id,
 			json: prof
-			}, function(err, resp, body){
+			},(err, resp, body) => {
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
-						console.log(resp.statusCode);
-						console.log(body);
+						console.log("post to es responded: " +resp.statusCode);
 						console.log("Attempts: " + attempts);
-						if(attempts < 11){
-							console.log(this.request);
+						if(attempts < 100){
+							setTimeout(()=>{this.postToEs(prof, attempts+1);}, 20000);
 						}
 					}
 		});
 	}
 
-public fetchAllFromES(nrOfResults: number, project:String, updater: (esResult: DTO.EsDto)=>void){
+public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void){
 		var profList: DTO.ProfDto[] = [];
 		this.request({
 			method: 'GET',
-			uri: 'http://127.0.0.1:9200/heloise/'+project+'/_search?size='+nrOfResults
+			uri: 'http://127.0.0.1:9200/heloise/'+this.projectId+'/_search?size='+nrOfResults
 			
 			}, function(err, resp, body:string){
 					var esDto: DTO.EsDto = new DTO.EsDto();
@@ -60,7 +60,7 @@ public fetchAllFromES(nrOfResults: number, project:String, updater: (esResult: D
 				console.log(url);
 				console.log("Attempts: " + attempts);
 				
-				if(attempts < 101){
+				if(attempts < 100){
 					this.doRequest(url, pageType, attempts+1,prof);
 				}
 			
@@ -76,10 +76,12 @@ export class CplHttpRequester extends HttpRequester{
 
 	private indexPageSuffix: string = ".html";
 	private indexPagePrefix: string = "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite";	
-	constructor(indexPageUrl:string){
+	
+	constructor(){
 		super();
 		this.baseUrl = "http://www.uni-leipzig.de";
-		this.indexPageUrl = indexPageUrl;
+		this.projectId = "CPL";
+		this.indexPageUrl = "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite1.html";
 	}
 
 	public requestIndexPage():void;
@@ -94,6 +96,9 @@ export class CplHttpRequester extends HttpRequester{
 		}
 	}
 
+	/**
+		Eventuelle Abstratkion in HttpRequester möglich
+	*/
 	public requestDetailPage(prof:DTO.ProfDto):void{
 		this.doRequest(prof.url, DTO.PageType.DETAIL, 1,prof);
 	}

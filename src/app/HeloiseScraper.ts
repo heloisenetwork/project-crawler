@@ -15,7 +15,7 @@ export class CplHeloiseScraper extends HeloiseScraper{
 	private profs: DTO.ProfDto[] = [];
 	constructor(){
 	super();
-	this.requester = new Requester.CplHttpRequester("http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite1.html");
+	this.requester = new Requester.CplHttpRequester();
 	this.requester.registerObserver(this);
 	this.parser = new Parser.CplHeloiseParser();
 	}
@@ -42,29 +42,35 @@ export class CplHeloiseScraper extends HeloiseScraper{
 	private requestIndexPage(numberOfIndexPages: number, index:number=1){
 		if(!(index > numberOfIndexPages)){	
 			this.requester.requestIndexPage(index);
-			setTimeout(() => this.requestIndexPage(numberOfIndexPages, index+1),1000);
+			setTimeout(() => {this.requestIndexPage(numberOfIndexPages, index+1);},2000);
+		  console.info("processe Index Page: " + index);
 		}
 	}
 
 	private scrapeSingleIndexPage(htmlBody: string): void{
 	 	var profList: DTO.ProfDto[] = this.parser.parseIndexPage(htmlBody);
-		for(var i = 0; i<profList.length; i++){
-			this.requester.postToEs(profList[i]);
-		}
+		this.postProfsToEs(profList);
+	}
+
+	private postProfsToEs(profList: DTO.ProfDto[],index:number=0){
+		if(profList.length > index){
+			this.requester.postToEs(profList[index]);
+			setTimeout(()=>{this.postProfsToEs(profList, index+1);}, 2000);
+			}
 	}
 
 	public scrapeDetails(){
-		this.requester.fetchAllFromES(2000, 'CPL',this.requestDetailsOf);
+		this.requester.fetchListFromES(2000,this.requestDetailsOf);
 
 	}
-	public requestDetailsOf = (esResult : DTO.EsDto, index :number= 0):void => {
+	private requestDetailsOf = (esResult : DTO.EsDto, index :number= 0):void => {
 		if(index%10==0){console.log(index)}
 		var hits: DTO.Hit[] = esResult.hits;
 		if(hits.length == index){
 			return;
 		}
 		this.requester.requestDetailPage(hits[index]._source);
-			setTimeout(() => {this.requestDetailsOf(esResult, index + 1);}, 1000);
+			setTimeout(() => {this.requestDetailsOf(esResult, index + 1);}, 2000);
 	}
 
 	private updateDetailsOf(profDto: DTO.ProfDto, html:string):void{
@@ -77,5 +83,5 @@ export class CplHeloiseScraper extends HeloiseScraper{
 }
 
 var scraper = new Scraper.CplHeloiseScraper();
-scraper.scrapeIndex();
+//scraper.scrapeIndex();
 //scraper.scrapeDetails();
