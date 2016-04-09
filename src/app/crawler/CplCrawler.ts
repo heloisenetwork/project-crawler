@@ -1,9 +1,9 @@
-///<reference path="HeloiseScraper.ts"/> 
+///<reference path="HeloiseCrawler.ts"/> 
 ///<reference path="http/CplHttpRequester.ts"/> 
 ///<reference path="html/CplHeloiseParser.ts"/> 
-module Scraper{
+module Crawler{
 
-export class CplHeloiseScraper extends HeloiseScraper{
+export class CplHeloiseCrawler extends HeloiseCrawler{
 	private profs: DTO.ProfDto[] = [];
 	constructor(){
 	super();
@@ -14,19 +14,19 @@ export class CplHeloiseScraper extends HeloiseScraper{
 
 	public update(dto: DTO.HtmlDto):void{
 		if(dto.type == DTO.PageType.INDEX){
-			this.scrapeIndexPages(dto.body);	
+			this.crawlIndexPages(dto.body);	
 		}else if(dto.type == DTO.PageType.SINGLE_INDEX){
-			this.scrapeSingleIndexPage(dto.body);
+			this.crawlSingleIndexPage(dto.body);
 		}else if(dto.type == DTO.PageType.DETAIL){
 			this.updateDetailsOf(dto.profDto,dto.body);
 		}
 	}
 
-	public scrapeIndex(){
+	public crawlIndex(){
 		this.requester.requestIndexPage();
 	}
 	
-	private scrapeIndexPages(htmlBody: string): void{
+	private crawlIndexPages(htmlBody: string): void{
 	 	var numberOfIndexPages: number = this.parser.getNumberOfIndexPages(htmlBody);
 		this.requestIndexPage(numberOfIndexPages);
 	}
@@ -39,7 +39,7 @@ export class CplHeloiseScraper extends HeloiseScraper{
 		}
 	}
 
-	private scrapeSingleIndexPage(htmlBody: string): void{
+	private crawlSingleIndexPage(htmlBody: string): void{
 	 	var profList: DTO.ProfDto[] = this.parser.parseIndexPage(htmlBody);
 		this.postProfsToEs(profList);
 	}
@@ -51,7 +51,7 @@ export class CplHeloiseScraper extends HeloiseScraper{
 			}
 	}
 
-	public scrapeDetails(){
+	public crawlDetails(){
 		this.requester.fetchListFromES(2000,this.requestDetailsOf);
 
 	}

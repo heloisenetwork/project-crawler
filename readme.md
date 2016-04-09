@@ -1,12 +1,12 @@
 # Allgemein
 
-Der Project-Scraper ist ein Tool zum automatisierten Bereitstellen der Daten eines Heloise-Projektpartners innerhalb einer Elasticsearch Instanz.
+Der Project-Crawler ist ein Tool zum automatisierten Bereitstellen der Daten eines Heloise-Projektpartners innerhalb einer Elasticsearch Instanz.
 Er bezieht die Daten direkt von der Homepage des jeweiligen Projektpartners und parst die Html-Seiten dementsprechend.
-Jedem Projekt soll ein eigener Project-Scraper bereitgestellt werden.
-Momentan steht der Scraper für folgende Projekte zur Verfügung:
-1. Professorenkatalog Uni Leipzig - CplScraper
+Jedem Projekt soll ein eigener Project-Crawler bereitgestellt werden.
+Momentan steht der Crawler für folgende Projekte zur Verfügung:
+1. Professorenkatalog Uni Leipzig - CplCrawler
 
-__Momentan ist kein Elasticsearch Konfigurierbar. Damit der Scraper läuft muss eine Instanz auf localhost:9200 laufen.__
+__Momentan ist kein Elasticsearch Konfigurierbar. Damit der Crawler läuft muss eine Instanz auf localhost:9200 laufen.__
 
 # Tools
 * Build Tool - Grunt
@@ -56,7 +56,7 @@ __Momentan ist kein Elasticsearch Konfigurierbar. Damit der Scraper läuft muss 
 
 ## Struktur
 
-* Scraper
+* Crawler
 * Parser
 * Requester
 
@@ -67,21 +67,21 @@ Jeweilige Module sind erweiterbar.
 * Erstellung neuer Files:
 	* ProjectHtmlParser
 	* ProjectHttpRequester
-	* ProjecScraper
+	* ProjecCrawler
 
 Parser und Requester müssen dabei das Modul HttpRequester oder HtmlParser deklarieren und die jeweiligen ts-Files includen
 
 	///<reference path="html/HeloiseParser.ts"/>
 
-Der Scraper importiert lediglich den ProjektParser und ProjektRequester. Ihm stehen alle geerbeten Funktionen zur Verfügung.
+Der Crawler importiert lediglich den ProjektParser und ProjektRequester. Ihm stehen alle geerbeten Funktionen zur Verfügung.
 
 ### Beispiel:
 --
 
 ## Projektspezifische Implementationen
 
-### Scraper
-*Beispiel: CPL-HeloiseScraper*
+### Crawler
+*Beispiel: CPL-HeloiseCrawler*
 
 Klasse definiert allgemeinen Workflow.
 
@@ -108,10 +108,10 @@ Es muss implementiert sein:
         	* Erweiterung des dazugehörigen ProfDto's (Ist im HtmlDto enthalten)
         	* Senden dieses an ES
 * Einstiegspunkte (API)
-	* ScrapeIndex
+	* CrawleIndex
 		* Initialer Request an die Einstiegsseite
 		* Requester triggert bei Erfolg Event mit DTO-INDEX oder eben SINGLE\_INDEX
-	* ScrapeDetails
+	* CrawleDetails
 		* Initialer Request an ES zum Parsen der Details einzelner Profs
 		* Request muss den Index-Typen beinhalten
 		* Menge der Professoren pro Index feststellen ?
@@ -184,7 +184,7 @@ Es muss implementiert werden:
 	* besonderem Wert hat dabei
 		* id
 		* url
-    	* Ohne diese Werte kann der Scraper nicht weiter machen
+    	* Ohne diese Werte kann der Crawler nicht weiter machen
     * Gibt eine Liste aller auf der Indexseite befindlichen ProfDto's zurück
 * parseDetailPage(htmlDto:string, profDto: ProfDto): void
 	* parst mittels cheerio die Detailseite eines Professors nach relevanten Daten

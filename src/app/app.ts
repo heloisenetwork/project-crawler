@@ -1,4 +1,4 @@
-///<reference path="scraper/CplScraper.ts"/> 
+///<reference path="crawler/CplCrawler.ts"/> 
 
 var appArgLength: number = process.argv.length;
 var execution: boolean = true;
@@ -6,19 +6,19 @@ if(!(appArgLength > 2)){
 	console.error("Arguments are missing.");
 }else{
 	
-	//switch scraper
+	//switch Crawler
 	if(process.argv[2] == "cpl"){
-		var scraper = new Scraper.CplHeloiseScraper();
+		var crawler = new Crawler.CplHeloiseCrawler();
 	}else{
-		console.log("No Scraper for arg %s found.", process.argv[2]);
+		console.log("No Crawler for arg %s found.", process.argv[2]);
 		execution = false;
 		}
 		if(execution){
-			// start scraping
+			// start crawling
 			if(process.argv[3] == "details"){
-				scraper.scrapeDetails();	
+				crawler.crawlDetails();	
 			}else{
-				scraper.scrapeIndex();
+				crawler.crawlIndex();
 			}
 		}
 
