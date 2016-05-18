@@ -9,6 +9,9 @@ export class HttpRequester extends Observer.Observable{
 	protected indexPageUrl:string;
 	protected projectId: string;
 
+//	private esUrl:string = "127.0.0.1:9200/heloise/";
+	private esUrl:string = "elasticsearch/heloise/";
+
 	public requestIndexPage():void;
 	public requestIndexPage(numberOfPage: number):void;
 	public requestIndexPage(numberOfPage?:number):void
@@ -24,7 +27,7 @@ export class HttpRequester extends Observer.Observable{
 	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: 'http://127.0.0.1:9200/heloise/'+this.projectId+'/' + prof.id,
+			uri: esUrl+this.projectId+'/' + prof.id,
 			json: prof
 			},(err, resp, body) => {
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
@@ -41,7 +44,7 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 		var profList: DTO.ProfDto[] = [];
 		this.request({
 			method: 'GET',
-			uri: 'http://127.0.0.1:9200/heloise/'+this.projectId+'/_search?size='+nrOfResults
+			uri: esUrl+this.projectId+'/_search?size='+nrOfResults
 			
 			}, function(err, resp, body:string){
 					var esDto: DTO.EsDto = new DTO.EsDto();
