@@ -10,7 +10,7 @@ export class HttpRequester extends Observer.Observable{
 	protected projectId: string;
 
 //	private esUrl:string = "127.0.0.1:9200/heloise/";
-	private esUrl:string = "elasticsearch:9200/heloise/";
+	private esUrl:string = "http://elasticsearch:9200/heloise/";
 
 	public requestIndexPage():void;
 	public requestIndexPage(numberOfPage: number):void;
