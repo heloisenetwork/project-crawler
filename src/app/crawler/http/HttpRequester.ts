@@ -27,7 +27,7 @@ export class HttpRequester extends Observer.Observable{
 	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: esUrl+this.projectId+'/' + prof.id,
+			uri: this.esUrl+this.projectId+'/' + prof.id,
 			json: prof
 			},(err, resp, body) => {
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
@@ -44,7 +44,7 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 		var profList: DTO.ProfDto[] = [];
 		this.request({
 			method: 'GET',
-			uri: esUrl+this.projectId+'/_search?size='+nrOfResults
+			uri: this.esUrl+this.projectId+'/_search?size='+nrOfResults
 			
 			}, function(err, resp, body:string){
 					var esDto: DTO.EsDto = new DTO.EsDto();
