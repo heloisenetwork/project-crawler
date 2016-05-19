@@ -31,7 +31,7 @@ export class HttpRequester extends Observer.Observable{
 			json: prof
 			},(err, resp, body) => {
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
-						console.log("post to es responded: " +resp.statusCode);
+
 						console.log("Attempts: " + attempts);
 						if(attempts < 100){
 							setTimeout(()=>{this.postToEs(prof, attempts+1);}, 20000);
