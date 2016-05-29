@@ -22,15 +22,22 @@ module Server{
 			this.restServer.use(this.restify.CORS());
 
 			this.restServer.get('cpl/index', this.crawlCplIndex);
+			this.restServer.get('cpl/details', this.crawlCplDetails);
 			
 			this.restServer.listen(8666);
 		}
 		private crawlCplIndex = (req, res, next)=>{
 		
-		//res.header("Access-Control-Allow-Origin", "*");
-		//res.header("Access-Control-Allow-Headers", "X-Requested-With");	
 			var crawler = new Crawler.CplHeloiseCrawler();
 			crawler.crawlIndex();
+			res.status(200);
+			res.send({state:'ok',message:'crawling started'});
+			return next();
+		}
+		private crawlCplDetails = (req, res, next)=>{
+		
+			var crawler = new Crawler.CplHeloiseCrawler();
+			crawler.crawlDetails();
 			res.status(200);
 			res.send({state:'ok',message:'crawling started'});
 			return next();
