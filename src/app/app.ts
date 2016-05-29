@@ -1,9 +1,13 @@
-///<reference path="crawler/CplCrawler.ts"/> 
+///<reference path="crawler/CplCrawler.ts"/>  
+///<reference path="server.ts"/>
 
 var appArgLength: number = process.argv.length;
 var execution: boolean = true;
+
 if(!(appArgLength > 2)){
-	console.error("Arguments are missing.");
+	console.error("Testing Server");
+	var restCommander = new Server.RestCommander();
+
 }else{
 	
 	//switch Crawler
