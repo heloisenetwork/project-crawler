@@ -13,15 +13,22 @@ module Server{
 		}
 		
 		private init(): void{
-			
+		 	this.restify.CORS.ALLOW_HEADERS.push('accept');
+	    this.restify.CORS.ALLOW_HEADERS.push('sid');
+		  this.restify.CORS.ALLOW_HEADERS.push('lang');
+		  this.restify.CORS.ALLOW_HEADERS.push('origin');
+		  this.restify.CORS.ALLOW_HEADERS.push('withcredentials');
+		  this.restify.CORS.ALLOW_HEADERS.push('x-requested-with');		 
+			this.restServer.use(this.restify.CORS());
+
 			this.restServer.get('cpl/index', this.crawlCplIndex);
 			
 			this.restServer.listen(8666);
 		}
 		private crawlCplIndex = (req, res, next)=>{
 		
-			res.header("Access-Control-Allow-Origin", "*");
-	 		res.header("Access-Control-Allow-Headers", "X-Requested-With");	
+		//res.header("Access-Control-Allow-Origin", "*");
+		//res.header("Access-Control-Allow-Headers", "X-Requested-With");	
 			var crawler = new Crawler.CplHeloiseCrawler();
 			crawler.crawlIndex();
 			res.status(200);
