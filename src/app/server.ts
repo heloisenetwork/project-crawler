@@ -14,7 +14,8 @@ module Server{
 		
 		private init(): void{
 			
-			this.restServer.use
+			this.restServer.CORS.ALLOW_HEADERS.push('Access-Control-Allow-Origin');	
+			this.restServer.use(this.restServer.CORS());
 			this.restServer.get('cpl/index', this.crawlCplIndex);
 			
 			this.restServer.listen(8666);
