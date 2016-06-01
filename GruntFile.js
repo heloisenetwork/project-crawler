@@ -14,6 +14,10 @@ module.exports = function(grunt){
 				cmd: "node",
 				args: ["js/greeting.js"]
 			},
+			server: {
+				cmd: "node",
+				args:["js/app.js"]
+			},
 			cpl_index: {
 				cmd: "node",
 				args: [
