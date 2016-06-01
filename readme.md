@@ -6,7 +6,12 @@ Jedem Projekt soll ein eigener Project-Crawler bereitgestellt werden.
 Momentan steht der Crawler für folgende Projekte zur Verfügung:
 1. Professorenkatalog Uni Leipzig - CplCrawler
 
-__Momentan ist kein Elasticsearch Konfigurierbar. Damit der Crawler läuft muss eine Instanz auf localhost:9200 laufen.__
+Weiterhin stellt der Project-Crawler eine RESTful API zur Verfügung, über die der Crawlingprozess gestartet werden kann.
+Folgende URL's sind dabei nutzbar:
+
+1. localhost:8666/cpl/index
+2. localhost:8666/cpl/details
+
 
 # Tools
 * Build Tool - Grunt
@@ -19,8 +24,27 @@ __Momentan ist kein Elasticsearch Konfigurierbar. Damit der Crawler läuft muss 
 	* grunt-run
 	* grunt-ts
 	* grunt-watch
+	* restify
 
 # Installation
+
+## Konfiguration
+
+Um das Tool einzurichten muss zuerst eine grundlegende Konfiguration vorgenommen werden. Diese ist über eine Typescript-Konstantenklasse möglich. Zu finden ist sie unter
+
+	src/app/configuration/server_config.ts
+
+Darin werden in erster Linie URL's der Projektpartner gepflegt.
+
+Damit der Crawlinprozess erfolgreich ist, muss eine laufende Elasticsearchinstanz konfiguriert sein.
+Die Elasticsearchinstanz ist über eine Konfigurationsdatei konfigurierbar. Diese ist unter
+
+	src/app/configuration/server_config.ts
+zu finden.
+
+Damit Konfigurationen greifen können, muss der Code nach der Konfiguration kompiliert werden.
+
+## Systemvorbereitung und Konfiguration
 
     #grunt installieren
 	sudo apt-get install grunt-cli
@@ -36,7 +60,9 @@ __Momentan ist kein Elasticsearch Konfigurierbar. Damit der Crawler läuft muss 
 
 # Inbetriebnahme
 
-## BuildTool:
+## Reiner Crawlingprozess
+
+### BuildTool:
 
 	//IndexScraping
 	grunt run:cpl_index
@@ -44,12 +70,22 @@ __Momentan ist kein Elasticsearch Konfigurierbar. Damit der Crawler läuft muss 
 	//DetailScraping
 	grunt run:cpl_details
 
-## Konsole
+### Konsole
 
     //IndexScraping
 	node app.js cpl
 	//DetailScraping
     node app.js cpl details
+
+
+## Webserver mit RESTful API
+
+### Buildtool
+
+	grunt run:server
+
+### Konsole
+	node js/app.js
 
 # Troubleshooting
 
