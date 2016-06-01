@@ -28,7 +28,7 @@ export class HttpRequester extends Observer.Observable{
 	public postToEs(prof: DTO.ProfDto, attempts:number = 1):void{
 		this.request({
 			method: 'PUT',
-			uri: this.esUrl+this.projectId+'/' + prof.id,
+			uri: this.esUrl+this.projectId+ prof.id,
 			json: prof
 			},(err, resp, body) => {
 					if(err || (resp.statusCode!=200 && resp.statusCode!=201)){
