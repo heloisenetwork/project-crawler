@@ -1,16 +1,17 @@
 ///<reference path="HttpRequester.ts"/> 
+///<reference path="../../config/server_config.ts"/> 
 module Requester{
 
 export class CplHttpRequester extends HttpRequester{
 
-	private indexPageSuffix: string = ".html";
-	private indexPagePrefix: string = "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite";	
+	private indexPageSuffix: string = Configuration.UrlConfiguration.CPL_INDEXPAGE_SUFFIX;
+	private indexPagePrefix: string = Configuration.UrlConfiguration.CPL_INDEXPAGE_PREFIX;
 	
 	constructor(){
 		super();
-		this.baseUrl = "http://www.uni-leipzig.de";
+		this.baseUrl = Configuration.UrlConfiguration.CPL_URL;
 		this.projectId = "CPL";
-		this.indexPageUrl = "http://www.uni-leipzig.de/unigeschichte/professorenkatalog/gesamtliste/seite1.html";
+		this.indexPageUrl = Configuration.UrlConfiguration.CPL_INDEXPAGE_URL;
 	}
 
 	public requestIndexPage():void;
@@ -20,7 +21,7 @@ export class CplHttpRequester extends HttpRequester{
 		if(!numberOfPage){
 			this.doRequest(this.indexPageUrl, DTO.PageType.INDEX);
 		}else if(typeof numberOfPage == "number"){
-			var pageUrl = this.indexPagePrefix + numberOfPage + this.indexPageSuffix;
+			const pageUrl = this.indexPagePrefix + numberOfPage + this.indexPageSuffix;
 			this.doRequest(pageUrl, DTO.PageType.SINGLE_INDEX);
 		}
 	}
