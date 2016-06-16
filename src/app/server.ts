@@ -13,6 +13,7 @@ module Server{
 		}
 		
 		private init(): void{
+			this.restify.CORS.ALLOW_HEADERS.push('Access-Control-Allow-Origin')
 		 	this.restify.CORS.ALLOW_HEADERS.push('accept');
 	    this.restify.CORS.ALLOW_HEADERS.push('sid');
 		  this.restify.CORS.ALLOW_HEADERS.push('lang');
