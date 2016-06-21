@@ -7,6 +7,7 @@ var execution: boolean = true;
 if(!(appArgLength > 2)){
 	console.error("Testing Server");
 	var restCommander = new Server.RestCommander();
+	var uploader  = new Server.UploadServer();
 
 }else{
 	
