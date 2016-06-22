@@ -18,6 +18,13 @@ module.exports = function(grunt){
 				cmd: "node",
 				args:["js/app.js"]
 			},
+			par: {
+				cmd: "node",
+				args: [
+					"js/app.js",
+					"par"
+				]
+			},
 			cpl_index: {
 				cmd: "node",
 				args: [
@@ -37,7 +44,7 @@ module.exports = function(grunt){
 		ts: {
 			app: {
 				files: [
-					{src: ['src/app/**/*.ts', "!**/config/*stub*.ts"], dest: 'js/app.js'}
+					{src: ['src/app/system/**/*.ts', 'src/app/crawler/**/*.ts', 'src/app/config/**/*.ts','src/app/*.ts', "!**/config/*stub*.ts"], dest: 'js/app.js'}
 				],
 				options: {
 					target: "es5",
