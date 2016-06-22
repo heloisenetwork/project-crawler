@@ -2,6 +2,7 @@
 ///<reference path="../../system/system.ts"/> 
 ///<reference path="../../config/server_config.ts"/> 
 
+
 module Requester{
 
 export class HttpRequester extends Observer.Observable{
@@ -10,7 +11,6 @@ export class HttpRequester extends Observer.Observable{
 	protected indexPageUrl:string;
 	protected projectId: string;
 
-//	private esUrl:string = "http://localhost:9200/heloise/";
 	private esUrl:string = Configuration.UrlConfiguration.ELASTICSEARCH_URL;
 
 	public requestIndexPage():void;
