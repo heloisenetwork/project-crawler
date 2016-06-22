@@ -13,7 +13,9 @@ if(!(appArgLength > 2)){
 	
 	//switch Crawler
 	if(process.argv[2] == "cpl"){
-		var crawler = new Crawler.CplHeloiseCrawler();
+		var crawler: Crawler.HeloiseCrawler = new Crawler.CplHeloiseCrawler();
+	}else if(process.argv[2] == "par"){
+		var crawler: Crawler.HeloiseCrawler = new Crawler.ParisiensCrawler();
 	}else{
 		console.log("No Crawler for arg %s found.", process.argv[2]);
 		execution = false;
