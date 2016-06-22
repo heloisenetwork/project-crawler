@@ -49,6 +49,7 @@ module.exports = function(grunt){
 				options: {
 					target: "es5",
 					compiler: "node_modules/typescript/bin/tsc",
+					//module: "commonjs"
 				}
 			}
 		}
