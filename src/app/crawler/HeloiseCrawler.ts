@@ -9,6 +9,12 @@ export class HeloiseCrawler implements Observer.Observer{
 	public update(dto: DTO.HtmlDto):void{
 		console.log("Abstract Method Called");
 	}
+	public crawlDetails(): void{
+		console.log("Abstract Method Called");
+	}
+	public crawlIndex(): void{
+		console.log("Abstract Method Called");
+	}
 }
 
 
