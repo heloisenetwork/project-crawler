@@ -2,6 +2,8 @@
 ///<reference path="../typings/express/express.d.ts" />
 ///<reference path="../typings/multer/multer.d.ts" />
 ///<reference path="config/uploadStorage.ts" />
+///<reference path="crawler/ParisiensCrawler.ts" />
+
 module Server{
 					
 	export class UploadServer{
@@ -33,7 +35,10 @@ module Server{
 		private uploadFile = (req, res, next) => {
 			console.log(req.file);
 			
-			res.status(200).send('Your Upload succeded. Go back to your main site <a href="'+Configuration.UploadConfiguration.REDIRECT_URL+'">here</a>');
+			let crawler = new Crawler.ParisiensCrawler();
+			crawler.crawlIndex();
+			
+			res.status(200).send('Your Upload succeded. The Crawling of it starts instantly. Go back to your main site <a href="'+Configuration.UploadConfiguration.REDIRECT_URL+'">here</a>');
 			return next();
 					
 		}
