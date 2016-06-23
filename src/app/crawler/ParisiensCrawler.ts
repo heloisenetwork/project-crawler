@@ -44,9 +44,7 @@ export class ParisiensCrawler extends HeloiseCrawler{
 			prof.id = rowObject.id;
 			prof.title = rowObject.title;
 			//	console.log(prof);
-			if(+rowIndex < 100 ){
 			requester.postToEs(prof);
-			}	
 		}
 	}
 }
