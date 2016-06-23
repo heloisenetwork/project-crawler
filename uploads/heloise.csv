@@ -2752,8 +2752,8 @@
           
           .
         ","non","non","non"
-"270","ALANUS Eurini","1393","Étudiant.","Bretagne  ","Tréguier","Paris","
-          Étudiant en décret en
+"16483","ALANUS Eurini","1393","Étudiant","Bretagne  ","Tréguier","Paris","
+          Étudiant en droit canon (Paris) en
           
             1387
           
@@ -2763,8 +2763,8 @@
           
           .
         ","oui","non","non"
-"16483","ALANUS Eurini","1393","Étudiant","Bretagne  ","Tréguier","Paris","
-          Étudiant en droit canon (Paris) en
+"270","ALANUS Eurini","1393","Étudiant.","Bretagne  ","Tréguier","Paris","
+          Étudiant en décret en
           
             1387
           
@@ -12941,7 +12941,6 @@
           
           .
         ","oui","oui","non"
-"1619","CHRISTIANUS","1330","Étudiant","  ","","Paris","","non","non","non"
 "1623","CHRISTIANUS","1485","Maître","  ","","Paris","
           Magister (Paris) attesté en
           
@@ -12956,6 +12955,7 @@
           
           .
         ","non","oui","non"
+"1619","CHRISTIANUS","1330","Étudiant","  ","","Paris","","non","non","non"
 "1617","CHRISTIANUS Bellovacensis","1259","Maître","Lorraine Verdun ","","Paris","
           Maître en théologie
           
@@ -18186,8 +18186,8 @@
           Paris
           ?
         ","non","non","non"
-"2242","FELIX","NaN","Étudiant","  ","","Florence","  Étudiant en notariat (Florence).","non","non","oui"
 "19960","FELIX","1444","Suppôt","  ","","Paris","","non","oui","non"
+"2242","FELIX","NaN","Étudiant","  ","","Florence","  Étudiant en notariat (Florence).","non","non","oui"
 "2243","FELIX Esculi","1394","Maître","France Champagne ","","Paris","
           Bachelier en théologie (Paris)
           
@@ -19530,8 +19530,8 @@
 "19815","FROGERIUS","1171","Extérieur","  ","","","","oui","oui","non"
 "2395","FULCALDUS de Dole","1368","Suppôt","  ","","","","non","oui","non"
 "2396","FULCALDUS de Rochechouart","1330","Incertain","  ","","Paris","","oui","non","non"
-"19816","FULCO","1187","Incertain","  ","","","","oui","non","non"
 "19817","FULCO","1171","Extérieur","  ","","","","oui","non","non"
+"19816","FULCO","1187","Incertain","  ","","","","oui","non","non"
 "2397","FULCO Bardol","1357","Incertain","  ","","Paris","","oui","non","non"
 "2398","FULCO Bardoul","1349","Incertain","  ","","Paris","Magister.","non","oui","non"
 "2399","FULCO Morvin","1364","Maître","  ","Thérouanne","Paris","
@@ -19750,8 +19750,8 @@
           
           .
         ","non","non","non"
-"16969","GALTERUS","1180","Étudiant ?","  ","","Paris","Étudiant ?","oui","non","non"
 "16980","GALTERUS","1180","Extérieur ?","  ","","Paris","","oui","non","non"
+"16969","GALTERUS","1180","Étudiant ?","  ","","Paris","Étudiant ?","oui","non","non"
 "19779","GALTERUS Bergoti","1446","Maître","  ","","Paris","
           Maître ès arts (Paris)
           
@@ -21635,8 +21635,8 @@
           
           .
         ","oui","oui","non"
-"16705","GUIDO","1330","Étudiant","  ","","Paris","","non","non","non"
 "17621","GUIDO","1416","Suppôt","  ","","Paris","","non","oui","non"
+"16705","GUIDO","1330","Étudiant","  ","","Paris","","non","non","non"
 "17646","GUIDO Abbatis","1448","Maître","  ","Tréguier","Paris","
           Licencié en droit canon (Paris) en avril
           
@@ -22686,8 +22686,8 @@
 "19608","GUILLELMUS Brinon","1464","Étudiant","  ","","Paris","Etudiant ?","non","non","non"
 "19541","GUILLELMUS Brisset","1464","Maître","  ","","Paris","Maître ?","non","non","non"
 "19522","GUILLELMUS Brissonneti","1464","Étudiant","  ","","Paris","","non","non","non"
-"3766","GUILLELMUS Brito","1317","Étudiant","  ","","Paris","","non","non","non"
 "3767","GUILLELMUS Brito","1313","Maître","  ","","Paris","Magister","non","non","non"
+"3766","GUILLELMUS Brito","1317","Étudiant","  ","","Paris","","non","non","non"
 "19646","GUILLELMUS Brosson","1464","Maître","  ","","Paris","Maître ?","non","non","non"
 "17719","GUILLELMUS Brumel","1416","Étudiant","  ","","Paris","
           Étudiant en droit canon (Paris)
@@ -22712,13 +22712,6 @@
           
           .
         ","oui","non","non"
-"3771","GUILLELMUS Burgensis","1387","Étudiant","  ","","Paris","
-           Étudiant en médecine (Paris)
-          
-            1387
-          
-          .
-        ","oui","non","non"
 "3772","GUILLELMUS Burgensis","1476","Maître","  ","","Paris","
           Maître en théologie (Paris) (17 avril)
           
@@ -22726,6 +22719,13 @@
           
           .
         ","oui","oui","non"
+"3771","GUILLELMUS Burgensis","1387","Étudiant","  ","","Paris","
+           Étudiant en médecine (Paris)
+          
+            1387
+          
+          .
+        ","oui","non","non"
 "3774","GUILLELMUS Burserii","1416","Maître","  ","","Paris","
           Licencié en droit canon (Paris) le 25 avril
           
@@ -26176,13 +26176,6 @@
           
           .
         ","non","non","non"
-"16791","GUILLELMUS de Parisius","1446","Maître","  ","","Paris","
-          Maître ès arts (Paris)
-          
-            1446
-          
-          .
-        ","oui","non","non"
 "16792","GUILLELMUS de Parisius","1440","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
           
@@ -26190,6 +26183,13 @@
           
           .
         ","oui","oui","non"
+"16791","GUILLELMUS de Parisius","1446","Maître","  ","","Paris","
+          Maître ès arts (Paris)
+          
+            1446
+          
+          .
+        ","oui","non","non"
 "19570","GUILLELMUS de Pavart","1464","Étudiant","  ","","Paris","Etudiant ?","non","non","non"
 "4348","GUILLELMUS de Piciaco","1384","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
@@ -26990,8 +26990,8 @@
           .
         ","oui","oui","non"
 "18761","HEN...","1464","Maître","  ","","Paris","Maître ès arts ?","non","non","non"
-"19869","HENRICUS","1313","Étudiant","Allemagne  ","","Paris","Étudiant ;","non","non","non"
 "4620","HENRICUS","1334","Maître","Suède  ","","Paris","Magister","oui","non","non"
+"19869","HENRICUS","1313","Étudiant","Allemagne  ","","Paris","Étudiant ;","non","non","non"
 "4624","HENRICUS","1313","Étudiant","  ","","Paris","
           Étudiant (Paris)
           
@@ -28957,6 +28957,7 @@
           :1272.
         ","non","oui","non"
 "5283","JACOBA Felicie de Almania","1322","Extérieur","  ","","Paris","","non","oui","non"
+"5285","JACOBUS","1330","?Étudiant","  ","","Paris","","non","non","non"
 "15057","JACOBUS","1486","Étudiant","  ","","Paris","
            Étudiant en médecine (Paris)
           
@@ -28969,7 +28970,6 @@
           
           .
         ","non","non","non"
-"5285","JACOBUS","1330","?Étudiant","  ","","Paris","","non","non","non"
 "18211","JACOBUS A. Largent","1415","Suppôt","  ","Cambrai","Paris","","non","oui","non"
 "5290","JACOBUS Agni","1339","Maître","  ","Chartres","Paris","
           Maître en médecine (Paris)
@@ -29162,13 +29162,6 @@
           
           .
         ","oui","non","non"
-"5585","JACOBUS Britonis","1374","Étudiant","  ","","Paris","
-          Étudiant ès arts (Paris)
-          
-            1374
-          
-          .
-        ","non","non","non"
 "15456","JACOBUS Britonis","1454","Maître","  ","","Paris","
           Maître en théologie (Paris) (10 mai)
           
@@ -29176,6 +29169,13 @@
           
           .
         ","oui","oui","non"
+"5585","JACOBUS Britonis","1374","Étudiant","  ","","Paris","
+          Étudiant ès arts (Paris)
+          
+            1374
+          
+          .
+        ","non","non","non"
 "18265","JACOBUS Brognardi","1443","Gradué","  ","Cambrai","Paris","
           Bachelier en droit canon (Paris) 16 mai
           
@@ -32378,18 +32378,6 @@
           
           ?
         ","non","non","non"
-"6635","JOHANNES Carpentarii","1388","Maître","  ","Thérouanne","Paris","
-          Étudiant en théologie (Paris)
-          
-            
-              1380
-            
-            
-              1381
-            
-          
-          .
-        ","oui","non","non"
 "6637","JOHANNES Carpentarii","1475","Gradué","France France du Centre ","Chartres","Paris","
           Bachelier en droit canon (Paris) le 3 Mars
           
@@ -32404,6 +32392,18 @@
           
           .
         ","non","non","non"
+"6635","JOHANNES Carpentarii","1388","Maître","  ","Thérouanne","Paris","
+          Étudiant en théologie (Paris)
+          
+            
+              1380
+            
+            
+              1381
+            
+          
+          .
+        ","oui","non","non"
 "5738","JOHANNES Carpentin","1482","Maître","  ","","Paris","
           Maître en médecine (Paris)
           
@@ -33287,27 +33287,6 @@
           .
         ","oui","non","oui"
 "6781","JOHANNES Faber","1322","Extérieur","  ","","","","non","oui","non"
-"5779","JOHANNES Fabri","1403","Étudiant","  ","","Paris","
-           Étudiant en médecine (Paris)
-          
-            1403
-          
-          .
-        ","oui","non","non"
-"5780","JOHANNES Fabri","1380","Étudiant","  ","","Paris","
-           Étudiant en théologie (Paris)
-          
-            1380
-          
-          .
-        ","non","non","non"
-"5781","JOHANNES Fabri","1409","Étudiant","  ","","Paris","
-           Étudiant en théologie (Paris)
-          
-            1411
-          
-          .
-        ","non","non","non"
 "15248","JOHANNES Fabri","1442","Maître","  ","","Paris","
           Docteur en théologie (Paris) (le 15 octobre)
           
@@ -33328,6 +33307,27 @@
             1464
           
           ?
+        ","non","non","non"
+"5779","JOHANNES Fabri","1403","Étudiant","  ","","Paris","
+           Étudiant en médecine (Paris)
+          
+            1403
+          
+          .
+        ","oui","non","non"
+"5780","JOHANNES Fabri","1380","Étudiant","  ","","Paris","
+           Étudiant en théologie (Paris)
+          
+            1380
+          
+          .
+        ","non","non","non"
+"5781","JOHANNES Fabri","1409","Étudiant","  ","","Paris","
+           Étudiant en théologie (Paris)
+          
+            1411
+          
+          .
         ","non","non","non"
 "12651","JOHANNES Falquerii","1446","Gradué","  ","Besançon","Paris","
           Bachelier en droit canon (Paris)
@@ -33378,6 +33378,7 @@
           
           .
         ","oui","non","non"
+"6797","JOHANNES Ferriti","1330","?Étudiant","  ","","Paris","","non","non","non"
 "16895","JOHANNES Ferriti","1342","Maître","France Picardie ","","Paris","
           Maître ès arts (Paris)
           
@@ -33385,7 +33386,6 @@
           
           .
         ","oui","non","non"
-"6797","JOHANNES Ferriti","1330","?Étudiant","  ","","Paris","","non","non","non"
 "18933","JOHANNES Fidon","1464","Maître","  ","","Paris","
           Maître ès arts à
           Paris
@@ -33642,6 +33642,7 @@
           .
         ","oui","non","non"
 "6847","JOHANNES Garnerii","1339","Extérieur","Montpellier  ","","","","non","non","non"
+"6269","JOHANNES Garnier","1464","Extérieur","  ","","Paris","","non","oui","non"
 "6268","JOHANNES Garnier","1497","Gradué","  ","","Paris","
           Licencié en médecine (Paris)
           
@@ -33649,7 +33650,6 @@
           
           .
         ","non","non","non"
-"6269","JOHANNES Garnier","1464","Extérieur","  ","","Paris","","non","oui","non"
 "12686","JOHANNES Gastevin","1459","Gradué","  ","","Paris","
           Bachelier en théologie (Paris)
           
@@ -33726,6 +33726,7 @@
         ","oui","oui","oui"
 "18784","JOHANNES Germani 2","1464","Étudiant ?","  ","","Paris","Étudiant ?","non","non","non"
 "18752","JOHANNES Gervasii","1464","Maître","  ","","Paris","Maître ès arts ?","non","non","non"
+"15238","JOHANNES Gilbert","1436","Extérieur","  ","","","","non","oui","non"
 "6270","JOHANNES Gilbert","1385","Maître","  ","","Paris","
            Étudiant en médecine (Paris)
           
@@ -33738,7 +33739,6 @@
           
           .
         ","oui","non","non"
-"15238","JOHANNES Gilbert","1436","Extérieur","  ","","","","non","oui","non"
 "6271","JOHANNES Gilberti","1348","Maître","Flandres Seclin ","Cambrai","Paris","Étudiant en théologie (?Paris).","oui","oui","non"
 "13380","JOHANNES Givois","1435","Maître","  ","","Paris","
           Docteur en théologie (Paris) (le 17 novembre)
@@ -34441,13 +34441,6 @@
           
           ?
         ","non","non","non"
-"5837","JOHANNES Johannis","1428","Maître","Pays-Bas Hollande Leyde","Utrecht","Louvain","
-          Bachelier en théologie (?Paris)
-          
-            1434
-          
-          .
-        ","oui","oui","non"
 "5838","JOHANNES Johannis","1465","Maître","France Île-de-France de France Paris","Paris","Paris","
           Maître en médecine (Paris)
           
@@ -34455,6 +34448,13 @@
           
           .
         ","non","oui","non"
+"5837","JOHANNES Johannis","1428","Maître","Pays-Bas Hollande Leyde","Utrecht","Louvain","
+          Bachelier en théologie (?Paris)
+          
+            1434
+          
+          .
+        ","oui","oui","non"
 "12629","JOHANNES Jordani","1447","Gradué","  ","","Paris","
           Bachelier en théologie (Paris)
           
@@ -35601,13 +35601,6 @@
           
           .
         ","oui","oui","non"
-"5893","JOHANNES Olearii","1315","Étudiant","  ","","Paris","
-           Étudiant en grammaire (Paris)
-          
-            1315
-          
-          .
-        ","non","non","non"
 "12666","JOHANNES Olearii","1441","Gradué","  ","","Paris","
           Licencié en théologie (Paris) (le 29 janvier)
           
@@ -35615,6 +35608,13 @@
           
           .
         ","oui","oui","non"
+"5893","JOHANNES Olearii","1315","Étudiant","  ","","Paris","
+           Étudiant en grammaire (Paris)
+          
+            1315
+          
+          .
+        ","non","non","non"
 "7305","JOHANNES Olearius","1313","Étudiant","  ","","Paris","Étudiant ?","non","non","non"
 "16032","JOHANNES Olivarii","1380","Suppôt","  ","","","","non","oui","non"
 "12803","JOHANNES Oliverius","1520","Gradué","  ","Paris","Paris","
@@ -36734,17 +36734,17 @@
           
           .
         ","oui","oui","oui"
-"16307","JOHANNES Ruffi","1393","Maître","France Picardie Abbeville","","Paris","
-          Maître en théologie (Paris)
-          
-            1380
-          
-          .
-        ","oui","oui","non"
 "12589","JOHANNES Ruffi","1419","Gradué","  ","","Paris","
           Bachelier en théologie (Paris)
           
             1420
+          
+          .
+        ","oui","oui","non"
+"16307","JOHANNES Ruffi","1393","Maître","France Picardie Abbeville","","Paris","
+          Maître en théologie (Paris)
+          
+            1380
           
           .
         ","oui","oui","non"
@@ -36820,6 +36820,13 @@
         ","oui","oui","non"
 "7483","JOHANNES Sasson","1313","Étudiant","  ","","Paris","Étudiant","oui","non","non"
 "20137","JOHANNES Saumeres","1464","Étudiant","  ","","Paris","Étudiant ?","non","non","non"
+"7486","JOHANNES Saunerii","1417","Maître","  ","","Paris","
+          Docteur en théologie (Paris)
+          
+            1422
+          
+          .
+        ","oui","oui","oui"
 "7485","JOHANNES Saunerii","1388","Étudiant","France Bourgogne ","Autun","Paris","
           Étudiant en grammaire (Paris)
           
@@ -36832,13 +36839,6 @@
           
           .
         ","oui","non","non"
-"7486","JOHANNES Saunerii","1417","Maître","  ","","Paris","
-          Docteur en théologie (Paris)
-          
-            1422
-          
-          .
-        ","oui","oui","oui"
 "13455","JOHANNES Sautoti","1481","Maître","  ","","Paris","
           Docteur en théologie (Paris) (le 30 octobre)
           
@@ -37035,13 +37035,6 @@
           
           ;
         ","non","oui","non"
-"16793","JOHANNES Sudoris","1485","Maître","  ","","Paris","
-          Maître en théologie (Paris) (1er avril)
-          
-            1485
-          
-          .
-        ","non","oui","non"
 "16794","JOHANNES Sudoris","1512","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
           
@@ -37049,6 +37042,13 @@
           
           .
         ","non","non","non"
+"16793","JOHANNES Sudoris","1485","Maître","  ","","Paris","
+          Maître en théologie (Paris) (1er avril)
+          
+            1485
+          
+          .
+        ","non","oui","non"
 "5966","JOHANNES Suquet","1460","Maître","  ","Paris","Louvain","
           Docteur en médecine (Louvain)
           
@@ -39627,13 +39627,6 @@
           
           .
         ","oui","non","non"
-"12573","JOHANNES de Mota","1434","Maître","France Normandie Rouen","","Paris","
-          Docteur en droit canon (Paris)
-          
-            1440
-          
-          .
-        ","oui","oui","non"
 "13222","JOHANNES de Mota","1433","Gradué","  ","","Paris","
           Licencié en médecine (Paris)
           
@@ -39641,6 +39634,13 @@
           
           .
         ","non","non","non"
+"12573","JOHANNES de Mota","1434","Maître","France Normandie Rouen","","Paris","
+          Docteur en droit canon (Paris)
+          
+            1440
+          
+          .
+        ","oui","oui","non"
 "19707","JOHANNES de Muchegros","1269","Extérieur","Normandie  ","","","","non","non","non"
 "12545","JOHANNES de Murato","1409","Gradué","  ","","Paris","
           Bachelier en droit canon (Paris)
@@ -40073,13 +40073,6 @@
           
           .
         ","oui","non","non"
-"6183","JOHANNES de Roda","1403","Étudiant","  ","Bayeux","Paris","
-           Étudiant en médecine (Paris)
-          
-            1403
-          
-          .
-        ","oui","non","non"
 "6184","JOHANNES de Roda","1395","Maître","  ","","Paris","
           Maître en médecine (Paris)
           
@@ -40087,6 +40080,13 @@
           
           .
         ","non","oui","non"
+"6183","JOHANNES de Roda","1403","Étudiant","  ","Bayeux","Paris","
+           Étudiant en médecine (Paris)
+          
+            1403
+          
+          .
+        ","oui","non","non"
 "16756","JOHANNES de Roma 2","1314","Gradué","Italie  ","","Paris","
           Maître en théologie (P ?)
           
@@ -40227,13 +40227,6 @@
           
           .
         ","non","non","non"
-"13359","JOHANNES de Sanctis","1387","Maître","  ","","Paris","
-          Docteur en théologie (Paris)
-          
-            1378
-          
-          .
-        ","oui","oui","non"
 "13360","JOHANNES de Sanctis","1397","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
           
@@ -40241,6 +40234,13 @@
           
           .
         ","oui","non","non"
+"13359","JOHANNES de Sanctis","1387","Maître","  ","","Paris","
+          Docteur en théologie (Paris)
+          
+            1378
+          
+          .
+        ","oui","oui","non"
 "18650","JOHANNES de Sancto Albino","1464","Étudiant ?","  ","","Paris","
           Étudiant en
           
@@ -41165,6 +41165,7 @@
           .
         ","oui","oui","non"
 "8612","LAURENTIA","1322","Extérieur","  ","","","","non","non","non"
+"8614","LAURENTIUS","1325","Extérieur","  ","","","","oui","non","non"
 "15479","LAURENTIUS","1366","Étudiant","  ","","Paris","
           Étudiant (Paris)
           
@@ -41172,7 +41173,6 @@
           
           .
         ","oui","non","non"
-"8614","LAURENTIUS","1325","Extérieur","  ","","","","oui","non","non"
 "8616","LAURENTIUS Alani de Suessla","1313","Étudiant","Suède  ","","Paris","Étudiant","non","non","non"
 "8620","LAURENTIUS Anglicus","1309","Étudiant","Angleterre  ","","Paris","
           Étudiant en théologie (Paris)
@@ -43077,11 +43077,11 @@
           .
         ","non","non","non"
 "19547","NICOLAUS","1190","Etudiant","Portugal  ","","Paris","","oui","non","non"
-"9175","NICOLAUS","1313","Étudiant","Suède  ","","Paris","Étudiant","oui","non","non"
 "14087","NICOLAUS","1493","Extérieur","  ","","","","non","oui","non"
-"9168","NICOLAUS","1330","Étudiant","  ","","Paris","","oui","non","non"
 "19033","NICOLAUS","1385","Suppôt","  ","","Paris","","non","oui","non"
 "19697","NICOLAUS","1254","Suppôt ?","  ","","","","non","oui","non"
+"9175","NICOLAUS","1313","Étudiant","Suède  ","","Paris","Étudiant","oui","non","non"
+"9168","NICOLAUS","1330","Étudiant","  ","","Paris","","oui","non","non"
 "9178","NICOLAUS","1313","Étudiant","  ","","Paris","
           Étudiant (Paris)
           
@@ -43387,13 +43387,6 @@
           
           .
         ","oui","oui","non"
-"9098","NICOLAUS Fabri","1372","Étudiant","  ","","Paris","
-           Étudiant en grammaire (Paris)
-          
-            1372
-          
-          .
-        ","non","non","non"
 "9099","NICOLAUS Fabri","1352","Maître","  ","","Paris","
           Étudiant en théologie (Paris)
           
@@ -43407,6 +43400,13 @@
             1464
           
           ?
+        ","non","non","non"
+"9098","NICOLAUS Fabri","1372","Étudiant","  ","","Paris","
+           Étudiant en grammaire (Paris)
+          
+            1372
+          
+          .
         ","non","non","non"
 "12491","NICOLAUS Fayelli","1377","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
@@ -43538,13 +43538,6 @@
           
           .
         ","oui","non","non"
-"13550","NICOLAUS Juvenis","1453","Maître","  ","","Paris","
-          Maître en théologie (Paris) (le 9 juin)
-          
-            1444
-          
-          .
-        ","oui","oui","non"
 "15928","NICOLAUS Juvenis","1367","Extérieur","  ","","","","non","oui","non"
 "16574","NICOLAUS Juvenis","1448","Gradué","  ","","Paris","
           Bachelier ès arts (Paris)
@@ -43553,6 +43546,13 @@
           
           .
         ","non","non","non"
+"13550","NICOLAUS Juvenis","1453","Maître","  ","","Paris","
+          Maître en théologie (Paris) (le 9 juin)
+          
+            1444
+          
+          .
+        ","oui","oui","non"
 "9286","NICOLAUS Koneken de Saxe","1430","Maître","Allemagne Saxe-Anhalt Magdebourg","","Erfurt","
           Bachelier en théologie (Erfurt)
           
@@ -44962,9 +44962,9 @@
 "
           Perrotus SYMONIS
         ","PERROTUS Symonis","9739","1313","Maître","  ","","Paris","oui","oui","oui"
+"19838","PETRUS","1313","Suppôt.","  ","","Paris","","non","oui","non"
 "15522","PETRUS","1400","Étudiant","  ","","","","oui","non","non"
 "16972","PETRUS","1180","Étudiant ?","  ","","Paris","Étudiant ?","oui","non","non"
-"19838","PETRUS","1313","Suppôt.","  ","","Paris","","non","oui","non"
 "17565","PETRUS Adelmus","1366","Extérieur","  ","","","","non","oui","non"
 "9745","PETRUS Alberico de Lugdauno","1328","Étudiant","  ","","Paris","
            Étudiant (Paris)
@@ -46525,6 +46525,13 @@
           
           ;
         ","oui","oui","non"
+"13574","PETRUS de Alliaco","1392","Maître","France Picardie Compiègne","","Paris","
+          Maître en théologie (Paris) (le 11 avril)
+          
+            1381
+          
+          .
+        ","oui","oui","oui"
 "15375","PETRUS de Alliaco","1394","Étudiant","France Picardie ","Soissons","Paris","
           Étudiant ès arts (Paris)
           
@@ -46537,13 +46544,6 @@
           
           .
         ","oui","non","non"
-"13574","PETRUS de Alliaco","1392","Maître","France Picardie Compiègne","","Paris","
-          Maître en théologie (Paris) (le 11 avril)
-          
-            1381
-          
-          .
-        ","oui","oui","oui"
 "10017","PETRUS de Altavilla","1330","Étudiant","  ","","Paris","
           Candidat Licencié en médecine (Paris)
           
@@ -46551,6 +46551,7 @@
           
           .
         ","non","non","non"
+"16877","PETRUS de Alvernia","1330","?Étudiant","  ","","Paris","","non","non","non"
 "15080","PETRUS de Alvernia","1274","Maître","  ","","Paris","
           Maître en médecine (Paris)
           
@@ -46558,7 +46559,6 @@
           
           .
         ","non","non","non"
-"16877","PETRUS de Alvernia","1330","?Étudiant","  ","","Paris","","non","non","non"
 "16928","PETRUS de Ancra","1330","Maître","  ","","Paris","Magister (Paris).","non","non","non"
 "10365","PETRUS de Aqua","1343","Étudiant","  ","","Paris","
            Étudiant en grammaire (Paris)
@@ -47508,6 +47508,7 @@
           
           .
         ","oui","non","oui"
+"16979","PHILIPPUS","1180","Extérieur ?","  ","","Paris","","oui","non","non"
 "10256","PHILIPPUS","1352","Étudiant","  ","","Paris","
           Étudiant en théologie (Paris)
           
@@ -47515,7 +47516,6 @@
           
           .
         ","non","non","non"
-"16979","PHILIPPUS","1180","Extérieur ?","  ","","Paris","","oui","non","non"
 "10260","PHILIPPUS Bajuli","1428","Maître","  ","","Paris","
           Docteur en théologie (Paris) (le 31 mai)
           
@@ -49629,8 +49629,8 @@
           
           .
         ","non","oui","non"
-"16865","ROBERTUS","1223","Incertain","  ","Liège","Paris","","oui","oui","non"
 "16913","ROBERTUS","1328","?Étudiant","  ","","Paris","","oui","non","non"
+"16865","ROBERTUS","1223","Incertain","  ","Liège","Paris","","oui","oui","non"
 "11038","ROBERTUS Aegidii","1405","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
           
@@ -50011,13 +50011,6 @@
           
           .
         ","non","non","non"
-"10958","ROBERTUS Poitevin","1445","Maître","France Paris ","","Poitiers","
-          Maître en médecine (Paris)
-          
-            1418
-          
-          .
-        ","oui","oui","non"
 "13682","ROBERTUS Poitevin","1388","Gradué","  ","","Paris","
           Licencié en théologie (Paris)
           
@@ -50025,6 +50018,13 @@
           
           .
         ","oui","non","non"
+"10958","ROBERTUS Poitevin","1445","Maître","France Paris ","","Poitiers","
+          Maître en médecine (Paris)
+          
+            1418
+          
+          .
+        ","oui","oui","non"
 "17295","ROBERTUS Quelain","1491","Maître","  ","","Paris","
           Maître en théologie (Paris)
           
@@ -50697,6 +50697,7 @@
           
           .
         ","non","non","non"
+"16866","SIMON","1210","Incertain","  ","","Paris","","oui","non","non"
 "16617","SIMON","1272","Maître","  ","","Paris","
           Maître en droit canon (Paris)
           
@@ -50704,7 +50705,6 @@
           
           .
         ","oui","oui","non"
-"16866","SIMON","1210","Incertain","  ","","Paris","","oui","non","non"
 "16970","SIMON 1","1180","Étudiant ?","  ","","Paris","Étudiant ?","oui","non","non"
 "13690","SIMON Adam","1509","Maître","  ","","Paris","
           Maître en théologie (Paris) (11 mai)
@@ -52085,6 +52085,8 @@
           
           .
         ","non","oui","non"
+"16867","THOMAS","1217","Incertain","  ","","Paris","Magister.","oui","oui","non"
+"11861","THOMAS","1321","Suppôt","  ","","Paris","","non","oui","non"
 "11857","THOMAS","1475","Étudiant","  ","","Paris","
           Étudiant en médecine (Paris)
           
@@ -52097,8 +52099,6 @@
           
           .
         ","non","non","non"
-"16867","THOMAS","1217","Incertain","  ","","Paris","Magister.","oui","oui","non"
-"11861","THOMAS","1321","Suppôt","  ","","Paris","","non","oui","non"
 "11863","THOMAS Ade","1448","Gradué","  ","","Paris","
           Bachelier en droit canon (Paris) (le 14 août)
           
@@ -52120,8 +52120,6 @@
           
           .
         ","non","non","non"
-"11873","THOMAS Anglicus","1330","Étudiant","Angleterre  ","","Paris","","non","non","non"
-"11870","THOMAS Anglicus","1342","Suppôt","  ","","Paris","","non","oui","non"
 "11869","THOMAS Anglicus","1331","Maître","  ","","Paris","
           Maître ès arts (Paris) attesté en janvier
           
@@ -52129,6 +52127,8 @@
           
           ;
         ","non","oui","non"
+"11870","THOMAS Anglicus","1342","Suppôt","  ","","Paris","","non","oui","non"
+"11873","THOMAS Anglicus","1330","Étudiant","Angleterre  ","","Paris","","non","non","non"
 "15216","THOMAS Aubert","1425","Extérieur","  ","","","","non","oui","non"
 "11874","THOMAS Avis","1427","Gradué","France Picardie Beauvais","Beauvais","Paris","
           Licencié en théologie (Paris)
@@ -52585,7 +52585,6 @@
           
           .
         ","oui","oui","non"
-"16873","THOMAS de Wedale","1330","Étudiant","Écosse  ","Saint-Andrews","Paris","","non","non","non"
 "12102","THOMAS de Wedale","1349","Maître","Écosse  ","","Paris","
           Étudiant en décret (?Paris)
           
@@ -52593,6 +52592,7 @@
           
           .
         ","oui","oui","non"
+"16873","THOMAS de Wedale","1330","Étudiant","Écosse  ","Saint-Andrews","Paris","","non","non","non"
 "12106","THOMAS de Wilton","1306","Maître","Angleterre  ","","Paris","
           Maître en théologie (Paris)
           
