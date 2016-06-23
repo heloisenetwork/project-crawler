@@ -7,13 +7,17 @@ module Crawler{
 export class ParisiensCrawler extends HeloiseCrawler{
 	private profs: DTO.ProfDto[] = [];
 	private Converter = require('csvtojson').Converter;
-	private csvConverter = new this.Converter({headers:['id','fullName','mediante','status','origine','diocèse','university','title','religion','professional','author']});
+	private fs = require('fs');
+	private csvConverter = new this.Converter({
+		headers:['id','fullName','mediante','status','origine','diocèse','university','title','religion','professional','author'],
+		charset:'utf8'
+	});
 
 
 	constructor(){
 		super();
-		//this.csvConverter.on("end_parsed", this.parseCsv)	
-		//this.parser = new Parser.CplHeloiseParser();
+		this.csvConverter.on("end_parsed",this.parseCsv)
+		this.csvConverter.on("record_parsed",this.test)
 	}
 
 	public update(dto: DTO.HtmlDto):void{
@@ -21,22 +25,28 @@ export class ParisiensCrawler extends HeloiseCrawler{
 	}
 
 	public crawlIndex(){
- //		let csvString = this.fs.readFile("uploads/heloise.csv").pipe(this.csvConverter);
-			this.csvConverter.fromFile("uploads/heloise.csv", this.parseCsv);
+		let csvStream = this.fs.createReadStream("uploads/heloise.csv", {encoding:"binary"}).pipe(this.csvConverter);
 	}
 
-	private parseCsv = (err, jsonResult:any) => {
+	private test = (row:any) => {
+	//console.log(row);
+	}
+
+	private parseCsv = (jsonResult:any) => {
 		let requester : Requester.HttpRequester = new Requester.ParisiensHttpRequester();
 		for(var rowIndex in jsonResult){
+			
 			let rowObject = jsonResult[rowIndex];
 			var prof: DTO.ProfDto = new DTO.ProfDto();
 			var title :string  = rowObject.title;
-			console.log(title.split('\n').join("").replace(/\s+/g, ' ').replace(".",'').trim());
-			prof.title = title.split('\n').join("").trim() ;
+			//console.log(title.split('\n').join("").replace(/\s+/g, ' ').replace(".",'').trim());
 			prof.name = rowObject.fullName;
 			prof.id = rowObject.id;
 			prof.title = rowObject.title;
+			//	console.log(prof);
+			if(+rowIndex < 100 ){
 			requester.postToEs(prof);
+			}	
 		}
 	}
 }
