@@ -60,7 +60,7 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 
 	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1, prof?:DTO.ProfDto): void =>  
 	{
-	this.request(url,{timeout:20000, headers:{'accept-charset':'utf8'}, (error, response, body) =>  {
+	this.request(url,{timeout:20000, headers:{'accept-charset':'utf8'}}, (error, response, body) =>  {
 			if(error || !(response.statusCode == 200)){
 				console.log(error);
 				console.log(url);
