@@ -58,6 +58,28 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 		return profList;
 	}
 
+
+	protected doUrlenCodedFormPostRequest = (url: string, form: any, pageType: DTO.PageType, attempts: number = 1): void => 
+	{
+		console.log(form);
+		this.request.post({url:url, form: form, headers:{"Content-Type":"application/x-www-form-urlencoded,charset=UTF-8","x-requested-with":"XMLHttpRequest"}}, (error, response, body) =>  {
+			if(error || !(response.statusCode == 200)){
+				console.log(error);
+				console.log(url);
+				console.log("Attempts: " + attempts);
+				
+				if(attempts < 100){
+					this.doUrlenCodedFormPostRequest(url,form, pageType, attempts+1);
+				}
+			
+			}else{
+				var jsonDto = new DTO.JsonDto(pageType, body);
+				super.notifyObservers(jsonDto);
+			}
+		});
+	}
+
+
 	protected doRequest = (url: string, pageType: DTO.PageType, attempts: number = 1, prof?:DTO.ProfDto): void =>  
 	{
 	this.request(url,{timeout:20000, headers:{'accept-charset':'utf8'}}, (error, response, body) =>  {
@@ -76,7 +98,9 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 			}
 		});
 	}
+
 }
+
 
 
 }
