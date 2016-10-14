@@ -14,7 +14,6 @@ module Crawler{
 
         public update(dto: DTO.JsonDto):void{
             if(dto.type == DTO.PageType.INDEX){
-              console.log(typeof dto.obj);
               let numberOfResults:number = dto.obj["iTotalDisplayRecords"];
               let numberOfRequests = Math.floor(numberOfResults / this.requestIndexItemsLimit);
               this.indexItems(RagItemFactory.createRagItems(dto.obj.aaData));
@@ -34,7 +33,7 @@ module Crawler{
         private crawlFurtherIndexPages(numberOfRequests: number, site:number = 1){
             if(numberOfRequests > 0 ){
                 this.requester.requestIndexPage(site);
-                setTimeout(() => {this.crawlFurtherIndexPages(--numberOfRequests, ++site);},3000);
+                setTimeout(() => {this.crawlFurtherIndexPages(--numberOfRequests, ++site);},8000);
 		        console.info("processe Index Page: " + numberOfRequests);
             }
         }
