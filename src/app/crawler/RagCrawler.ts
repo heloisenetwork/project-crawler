@@ -17,11 +17,11 @@ module Crawler{
               console.log(typeof dto.obj);
               let numberOfResults:number = dto.obj["iTotalDisplayRecords"];
               let numberOfRequests = Math.floor(numberOfResults / this.requestIndexItemsLimit);
-              console.log(numberOfResults + " : " + numberOfRequests);
+              this.indexItems(RagItemFactory.createRagItems(dto.obj.aaData));
               this.crawlFurtherIndexPages(numberOfRequests);
 
             }else if(dto.type == DTO.PageType.SINGLE_INDEX){
-              console.log(dto.obj);
+              this.indexItems(RagItemFactory.createRagItems(dto.obj.aaData));
             }else if(dto.type == DTO.PageType.DETAIL){
             //  this.updateDetailsOf(dto.profDto,dto.body);
             }
@@ -39,5 +39,35 @@ module Crawler{
             }
         }
 
+        private indexItems(ragItems: Array<RagItem>):void{
+            
+            if(ragItems.length > 0 ){
+                this.requester.postToEs(ragItems.shift());
+                
+                setTimeout(() => {this.indexItems(ragItems);},2000);
+            }
+            
+        }
+
+    }
+
+    class RagItem extends DTO.ProfDto{
+       public constructor( public id: string, public firstName: string, public lastName: string){
+           super();
+       };
     } 
+
+    class RagItemFactory{
+        public static createRagItems(arrayOfRawItems: any): Array<RagItem>{
+            let ragItems: Array<RagItem> = [];
+            let i = 0;
+            while(arrayOfRawItems.length > 0){
+                let currItem: any = arrayOfRawItems.shift();
+                ragItems[i] = new RagItem(currItem.main_id, currItem.pers_first_name1,currItem.pers_norm_name);
+                i++;
+            }
+           
+            return ragItems;
+        }
+    }
 }
