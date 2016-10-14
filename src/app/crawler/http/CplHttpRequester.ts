@@ -3,7 +3,7 @@
 module Requester{
 
 export class CplHttpRequester extends HttpRequester{
-
+	
 	private indexPageSuffix: string = Configuration.UrlConfiguration.CPL_INDEXPAGE_SUFFIX;
 	private indexPagePrefix: string = Configuration.UrlConfiguration.CPL_INDEXPAGE_PREFIX;
 	
@@ -12,7 +12,7 @@ export class CplHttpRequester extends HttpRequester{
 		this.baseUrl = Configuration.UrlConfiguration.CPL_URL;
 		this.projectId = "CPL";
 		this.indexPageUrl = Configuration.UrlConfiguration.CPL_INDEXPAGE_URL;
-		console.log(this.indexPageUrl);
+	
 	}
 
 	public requestIndexPage():void;
