@@ -22,11 +22,10 @@ export class RagHttpRequester extends HttpRequester{
         let pageType : DTO.PageType;
 		if(!numberOfPage){
 			formData = new FormData(0, this.limitOfResutsPerPage);
-            
             pageType = DTO.PageType.INDEX;    
-        }else if(typeof numberOfPage == "number"){
-            formData = new FormData(numberOfPage * this.limitOfResutsPerPage, (numberOfPage++) * this.limitOfResutsPerPage);
-            
+  
+      }else if(typeof numberOfPage == "number"){
+            formData = new FormData(numberOfPage * this.limitOfResutsPerPage, this.limitOfResutsPerPage);
             pageType = DTO.PageType.SINGLE_INDEX;
         }
 
