@@ -39,6 +39,13 @@ module.exports = function(grunt){
 					"cpl",
 					"details"
 				]
+			},
+			rag_index:{
+				cmd: "node",
+				args: [
+					"js/app.js",
+					"rag"
+				]
 			}
 		},
 		ts: {
