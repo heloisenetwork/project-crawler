@@ -61,7 +61,6 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 
 	protected doUrlenCodedFormPostRequest = (url: string, form: any, pageType: DTO.PageType, attempts: number = 1): void => 
 	{
-		console.log(form);
 		this.request.post({url:url, form: form, headers:{"Content-Type":"application/x-www-form-urlencoded,charset=UTF-8","x-requested-with":"XMLHttpRequest"}}, (error, response, body) =>  {
 			if(error || !(response.statusCode == 200)){
 				console.log(error);
@@ -73,7 +72,7 @@ public fetchListFromES(nrOfResults: number, updater: (esResult: DTO.EsDto)=>void
 				}
 			
 			}else{
-				var jsonDto = new DTO.JsonDto(pageType, body);
+				var jsonDto = new DTO.JsonDto(pageType, JSON.parse(body));
 				super.notifyObservers(jsonDto);
 			}
 		});
