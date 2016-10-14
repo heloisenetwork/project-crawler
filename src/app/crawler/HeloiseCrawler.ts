@@ -6,7 +6,7 @@ module Crawler{
 export class HeloiseCrawler implements Observer.Observer{
 	protected requester : Requester.HttpRequester; 
 	protected parser : Parser.HeloiseParser;
-	public update(dto: DTO.HtmlDto):void{
+	public update(dto: DTO.HttpDto):void{
 		console.log("Abstract Method Called");
 	}
 	public crawlDetails(): void{
