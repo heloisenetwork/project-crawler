@@ -52,7 +52,7 @@ module Crawler{
     }
 
     class RagItem extends DTO.ProfDto{
-       public constructor( public id: string, public firstName: string, public lastName: string){
+       public constructor( public id: string, public url:string,public firstName: string, public lastName: string){
            super();
        };
     } 
@@ -63,7 +63,7 @@ module Crawler{
             let i = 0;
             while(arrayOfRawItems.length > 0){
                 let currItem: any = arrayOfRawItems.shift();
-                ragItems[i] = new RagItem(currItem.main_id, currItem.pers_first_name1,currItem.pers_norm_name);
+                ragItems[i] = new RagItem(currItem.main_id, Configuration.UrlConfiguration.RAG_DETAIL_URL_PREFIX+currItem.main_id, currItem.pers_first_name1,currItem.pers_norm_name);
                 i++;
             }
            
