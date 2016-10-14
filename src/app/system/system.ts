@@ -1,7 +1,17 @@
 module DTO{
+	export class HttpDto{
+		constructor(public type:PageType){};
+	}
+	export class HtmlDto extends HttpDto{
+		constructor(public type:PageType, public body:string, public profDto?:ProfDto){
+			super(type);
+		}
+	}
 
-	export class HtmlDto{
-		constructor(public type:PageType, public body:string, public profDto?:ProfDto){}
+	export class JsonDto extends HttpDto{
+		constructor(public type:PageType, public obj:any){
+			super(type);
+		}
 	}
 
 
