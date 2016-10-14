@@ -4,7 +4,7 @@
 module Crawler{
     export class RagCrawler extends HeloiseCrawler{
         private profs: DTO.ProfDto[] = [];
-        private requestIndexItemsLimit:number = 10; 
+        private requestIndexItemsLimit:number = 50; 
         constructor(){
             super();
             this.requester = new Requester.RagHttpRequester(this.requestIndexItemsLimit);
@@ -31,10 +31,10 @@ module Crawler{
 		    this.requester.requestIndexPage();
 	    }
 
-        private crawlFurtherIndexPages(numberOfRequests: number){
+        private crawlFurtherIndexPages(numberOfRequests: number, site:number = 1){
             if(numberOfRequests > 0 ){
-                //this.requester.requestIndexPage(index);
-                setTimeout(() => {this.crawlFurtherIndexPages(--numberOfRequests);},3000);
+                this.requester.requestIndexPage(site);
+                setTimeout(() => {this.crawlFurtherIndexPages(--numberOfRequests, ++site);},3000);
 		        console.info("processe Index Page: " + numberOfRequests);
             }
         }
