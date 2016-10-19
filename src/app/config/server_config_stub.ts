@@ -9,5 +9,7 @@ module Configuration{
 		public static CPL_INDEXPAGE_URL:string = UrlConfiguration.CPL_URL + "/unigeschichte/professorenkatalog/gesamtliste/seite1.html";
 		public static CPL_INDEXPAGE_PREFIX: string = UrlConfiguration.CPL_URL + "/unigeschichte/professorenkatalog/gesamtliste/seite";
 		public static CPL_INDEXPAGE_SUFFIX: string = ".html";
+		public static RAG_URL:string = "http://www.rag-online.org//index.php";
+		public static RAG_SEARCH_URL:string = UrlConfiguration.RAG_URL + "?option=com_person1&task=sucheAjax&view=json&layout=json";
 	}
 }
