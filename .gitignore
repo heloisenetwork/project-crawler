@@ -5,3 +5,4 @@ js/
 src/typings/tsd.d.ts
 src/app/config/server_config.ts
 node_modules/
+uploads/
